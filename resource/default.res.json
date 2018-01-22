@@ -5,7 +5,7 @@
 			"name": "preloading"
 		},
 		{
-			"keys": "startgamebtn_png,startbg_png,pic1_jpg,pic10_jpg,pic11_jpg,pic12_jpg,pic13_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic17_jpg,pic18_jpg,pic19_jpg,pic2_jpg,pic20_jpg,pic21_jpg,pic22_jpg,pic23_jpg,pic3_jpg,pic4_jpg,pic5_jpg,pic6_jpg,pic7_jpg,pic8_jpg,pic9_jpg",
+			"keys": "startgamebtn_png,startbg_png,pic1_jpg,pic10_jpg,pic11_jpg,pic12_jpg,pic13_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic17_jpg,pic18_jpg,pic19_jpg,pic2_jpg,pic20_jpg,pic21_jpg,pic22_jpg,pic23_jpg,pic3_jpg,pic4_jpg,pic5_jpg,pic6_jpg,pic7_jpg,pic8_jpg,pic9_jpg,checkbtn_png,quespic_jpg",
 			"name": "preload"
 		}
 	],
@@ -164,6 +164,16 @@
 			"name": "loadbg_jpg",
 			"type": "image",
 			"url": "assets/loadbg.jpg"
+		},
+		{
+			"name": "checkbtn_png",
+			"type": "image",
+			"url": "assets/pic/checkbtn.png"
+		},
+		{
+			"name": "quespic_jpg",
+			"type": "image",
+			"url": "assets/pic/quespic.jpg"
 		}
 	]
 }

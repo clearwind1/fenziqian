@@ -11,6 +11,7 @@ class GameScene extends GameUtil.BassPanel {
     private picControl: MyBitmap;
     private picLBControl: MyBitmap;
     private picNumber: number;
+    private DelayTime: number;
 
     public constructor() {
         super();
@@ -31,7 +32,8 @@ class GameScene extends GameUtil.BassPanel {
         GameData._i().GameOver = false;
         GameData._i().GameScore = 0;
         GameData._i().GameLevel = 1;
-        this.picNumber = 2;
+        this.picNumber = 1;
+        this.DelayTime = 1000;
     }
     /**
      * 显示背景
@@ -41,10 +43,7 @@ class GameScene extends GameUtil.BassPanel {
         this.picControl.setanchorOff(0, 0);
         this.addChild(this.picControl);
 
-        this.picLBControl = new MyBitmap(RES.getRes('pic2_jpg'), 0, 0);
-        this.picLBControl.setanchorOff(0, 0);
-        this.addChild(this.picLBControl);
-        this.picLBControl.alpha = 0;
+        egret.setTimeout(this.touchtap, this, this.DelayTime);
 
         //this.addChild(GameScore._i());
     }
@@ -77,13 +76,35 @@ class GameScene extends GameUtil.BassPanel {
         }
     }
     private changepic() {
-        egret.Tween.get(this.picLBControl).to({ alpha: 1 }, 400);
-        egret.Tween.get(this.picControl).to({ alpha: 0 }, 400).call(() => {
+
+        this.picLBControl = new MyBitmap(RES.getRes('pic' + this.picNumber + '_jpg'), 0, 0);
+        this.picLBControl.setanchorOff(0, 0);
+        this.addChild(this.picLBControl);
+        this.picLBControl.alpha = 0;
+
+        egret.Tween.get(this.picLBControl).to({ alpha: 1 }, this.DelayTime);
+        egret.Tween.get(this.picControl).to({ alpha: 0, x: 0 }, this.DelayTime).call(() => {
             this.picControl.texture = this.picLBControl.texture;
             this.picControl.alpha = 1;
-            this.picLBControl.setNewTexture(RES.getRes('pic' + this.picNumber + '_jpg'));
-            this.picLBControl.alpha = 0;
-        },this);
+
+            this.removeChild(this.picLBControl);
+            if (this.picNumber == 3) {
+                egret.Tween.get(this.picControl).to({ x: -1350 }, 2000).call(() => {
+                    egret.setTimeout(this.touchtap, this, this.DelayTime);
+                }, this);
+            } else {
+                egret.setTimeout(this.touchtap, this, this.DelayTime);
+            }
+        }, this);
+    }
+    private touchtap() {
+        if (this.picNumber >= 23) {
+            GameUtil.GameScene.runscene(new QuestionPage(), SceneEffect.TransAlpha);
+            return;
+        }
+
+        this.picNumber++;
+        this.changepic();
     }
     /**
      * 触摸层
@@ -97,8 +118,7 @@ class GameScene extends GameUtil.BassPanel {
                 return;
             }
 
-            this.picNumber++;
-            this.changepic();
+            //this.touchtap();            
 
         }, this);
 

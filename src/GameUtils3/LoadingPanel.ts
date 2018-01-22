@@ -165,6 +165,7 @@ module GameUtil {
 
         public setPro(persend: number): void {
             this.loadingbar.width = this.loadingbar.texture.textureWidth * persend;
+            this.gifloadingbar.x = this.loadingbar.x + this.loadingbar.width;
             //console.log("this.width=====",this.width);
         }
 
