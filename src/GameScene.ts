@@ -33,7 +33,7 @@ class GameScene extends GameUtil.BassPanel {
         GameData._i().GameScore = 0;
         GameData._i().GameLevel = 1;
         this.picNumber = 1;
-        this.DelayTime = 1000;
+        this.DelayTime = 500;//1000
     }
     /**
      * 显示背景
