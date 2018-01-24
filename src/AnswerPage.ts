@@ -41,6 +41,29 @@ class AnswerPage extends GameUtil.BassPanel {
 	}
 	private upanswer() {
 		var par = [this.selectID];
-		GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
+		var param: Object = {
+            option: (this.selectID+1)
+        }
+		GameUtil.Http.getinstance().send(param, 'tingfeng.free.ngrok.cc/api/submitAnswer', this.updone, this,'');
+		
+		//GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
+	}
+	private updone(data) {
+		if (data['code'] == 0) {
+			console.log('data====', data['data']);
+			var info = data['data'];
+			GameData._i().Nickname = info['nickName'];
+			if (GameData._i().Nickname == 'test1') {
+				GameData._i().Nickname = '人情用户'
+			}
+			GameData._i().imageUrl = info['avatarUrl'];
+			if (GameData._i().imageUrl.length < 8) {
+				GameData._i().imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
+			}
+			GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
+		} else
+		{
+			console.log('msg====', data['message']);
+		}	
 	}
 }

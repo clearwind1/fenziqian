@@ -31,8 +31,8 @@ class GetImageByUrl extends egret.DisplayObjectContainer {
         if (this.imgheight != 0) {
             this.imag.height = this.imgheight;
         }
-        this.imag.anchorOffsetX = this.imgwidth / 2;
-        this.imag.anchorOffsetY = this.imgheight / 2;
+        // this.imag.anchorOffsetX = this.imgwidth / 2;
+        // this.imag.anchorOffsetY = this.imgheight / 2;
     }
 
     public getimg(): egret.Bitmap {

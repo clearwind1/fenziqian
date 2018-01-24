@@ -17,6 +17,8 @@ var GameData = (function () {
         this.GameScore = 0;
         this.GameLevel = 1;
         this.HeightScore = 0;
+        this.Nickname = '';
+        this.imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
     };
     GameData._i = function () {
         return (this._inst = (this._inst == null ? new GameData() : this._inst));

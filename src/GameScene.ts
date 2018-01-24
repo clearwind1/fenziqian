@@ -33,19 +33,63 @@ class GameScene extends GameUtil.BassPanel {
         GameData._i().GameScore = 0;
         GameData._i().GameLevel = 1;
         this.picNumber = 1;
-        this.DelayTime = 500;//1000
+        this.DelayTime = 100;//1000
     }
     /**
      * 显示背景
      */
+    private FirstContain: egret.DisplayObjectContainer;
+    private SecondContain: egret.DisplayObjectContainer;
     private showbg() {
-        this.picControl = new MyBitmap(RES.getRes('pic1_jpg'), 0, 0);
-        this.picControl.setanchorOff(0, 0);
-        this.addChild(this.picControl);
-
-        egret.setTimeout(this.touchtap, this, this.DelayTime);
+        // this.picControl = new MyBitmap(RES.getRes('phonetip_jpg'), 0, 0);
+        // this.picControl.setanchorOff(0, 0);
+        // this.addChild(this.picControl);
+        //egret.setTimeout(this.touchtap, this, this.DelayTime);
 
         //this.addChild(GameScore._i());
+
+        var bg: MyBitmap = new MyBitmap(RES.getRes('pic0_jpg'), 0, 0);
+        bg.setanchorOff(0, 0);
+        this.addChild(bg);
+
+        //-----------------新的---------------//
+        this.FirstContain = new egret.DisplayObjectContainer;
+        this.addChild(this.FirstContain);
+        this.SecondContain = new egret.DisplayObjectContainer;
+        this.addChild(this.SecondContain);
+
+        this.showLookphone();
+    }
+    private showLookphone() {
+        var lookphone: MyBitmap = new MyBitmap(RES.getRes('lookphone_png'), this.mStageW / 2, this.mStageH / 2);
+        lookphone.$setScaleX(1.4);
+        lookphone.$setScaleY(1.4);
+        this.FirstContain.addChild(lookphone);
+        egret.Tween.get(lookphone).to({ scaleX: 1, scaleY: 1 }, 500).wait(500).call(this.showmsg,this,[0]);
+    }
+    private showmsg(id) {
+        var pos = [[430,297],[109,359],[109,430]];
+        var img = new MyBitmap(RES.getRes('showmsg' + id + '_png'), pos[id][0], pos[id][1]);
+        img.setanchorOff(0, 0.5);
+        this.FirstContain.addChild(img);
+        id++;
+        egret.setTimeout(() => { if (id > 2) { this.showamazing(); }else( this.showmsg(id));}, this, 1000);
+    }
+    private showamazing() {
+        var img = new MyBitmap(RES.getRes('pic1_jpg'), this.mStageW / 2, this.mStageH / 2);
+        this.SecondContain.addChild(img);
+        egret.setTimeout(this.showresb, this, 1000);
+    }
+    private showresb() {
+        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(() => { this.showresbtap(0); }, this,);
+        //this.showresbtap(0);
+    }
+    private showresbtap(id) {
+        var img = new MyBitmap(RES.getRes('resbtpic' + id + '_png'), 169, 553);
+        img.setanchorOff(0, 0.5);
+        this.FirstContain.addChild(img);
+        id++;
+        egret.setTimeout(() => { if (id > 2) { } else { console.log('id===', id); this.FirstContain.removeChild(img); egret.setTimeout(() => {this.showresbtap(id)},this,1000)  };}, this, 1000);
     }
     /**
      * 游戏定时器

@@ -12,6 +12,8 @@ class GameData {
     public GameLevel: number;               //游戏等级
     public GameScore: number;               //游戏分数
     public HeightScore: number;             //最高分数
+    public Nickname: string;
+    public imageUrl: string;
 
     public constructor() {
         this.init();
@@ -25,6 +27,8 @@ class GameData {
         this.GameScore = 0;
         this.GameLevel = 1;
         this.HeightScore = 0;
+        this.Nickname = '';
+        this.imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
     }
 
     private static _inst:GameData = null;

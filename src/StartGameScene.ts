@@ -27,28 +27,47 @@ class StartGameScene extends GameUtil.BassPanel {
     /**显示背景界面 */
     private showbg() {
 
-        var shap: MyBitmap = new MyBitmap(RES.getRes('startbg_png'), 0, 0);
+        // var shap: MyBitmap = new MyBitmap(RES.getRes('startbg_png'), 0, 0);
+        // shap.setanchorOff(0, 0);
+        // shap.width = this.mStageW;
+        // shap.height = this.mStageH;
+        // this.addChild(shap);
+
+        // var posx = this.mStageW / 2;
+        // var posy = this.mStageH / 2;
+
+        // var gametitletext = new GameUtil.MyTextField(posx, 400, 100, 0.5, 0.5);
+        // gametitletext.setText(GameConfig.GAMENAME);
+        // gametitletext.italic = true;
+        // gametitletext.textColor = 0x75bfea;
+        // this.addChild(gametitletext);
+
+        // // this.addChild(new GameMenus(DisType.LeftTRight));
+
+        // var startbtn = new GameUtil.Menu(this, 'startgamebtn_png', 'startgamebtn_png', this.startgame);
+        // startbtn.setScaleMode();
+        // startbtn.x = this.mStageW / 2;
+        // startbtn.y = this.mStageH / 2;
+        // this.addChild(startbtn);
+
+        //------------------新的---------------------------//
+        var shap: MyBitmap = new MyBitmap(RES.getRes('phonetip_jpg'), 0, 0);
         shap.setanchorOff(0, 0);
         shap.width = this.mStageW;
         shap.height = this.mStageH;
         this.addChild(shap);
 
-        var posx = this.mStageW / 2;
-        var posy = this.mStageH / 2;
+        var btn: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_png', 'msgtip_png', this.startgame);
+        btn.x = this.mStageW / 2;
+        btn.y = 654;
+        this.addChild(btn);
+        btn.scaleX = btn.scaleY = 0;
+        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 600);
 
-        var gametitletext = new GameUtil.MyTextField(posx, 200, 100, 0.5, 0.5);
-        gametitletext.setText(GameConfig.GAMENAME);
-        gametitletext.italic = true;
-        gametitletext.textColor = 0x75bfea;
-        this.addChild(gametitletext);
+        var tip: MyBitmap = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
+        this.addChild(tip);
 
-        // this.addChild(new GameMenus(DisType.LeftTRight));
-
-        var startbtn = new GameUtil.Menu(this, 'startgamebtn_png', 'startgamebtn_png', this.startgame);
-        startbtn.setScaleMode();
-        startbtn.x = this.mStageW / 2;
-        startbtn.y = this.mStageH / 2;
-        this.addChild(startbtn);
+        egret.Tween.get(tip, { loop: true }).to({ alpha: 0 }, 0).wait(400).to({ alpha: 1 }, 0).wait(400);
 
     }
 

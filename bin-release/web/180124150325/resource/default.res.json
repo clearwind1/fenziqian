@@ -1,0 +1,274 @@
+{
+	"groups": [
+		{
+			"keys": "askerbg_jpg,askerbtn_png,askerpic0_png,askerpic1_png,askerpic2_png,askerpic3_png,askerpic4_png,askerselectp_png,backbtn_png,checkbtn_png,closebtn_png,donthavegzbtn_png,haibao0_jpg,haibao1_jpg,haibao2_jpg,haibao3_jpg,haibao4_jpg,havegzbtn_png,pic1_jpg,pic10_jpg,pic11_jpg,pic12_jpg,pic13_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic17_jpg,pic18_jpg,pic19_jpg,pic2_jpg,pic20_jpg,pic21_jpg,pic22_jpg,pic23_jpg,pic3_jpg,pic4_jpg,pic5_jpg,pic6_jpg,pic7_jpg,pic8_jpg,pic9_jpg,quespic_jpg,tipgz_png,startbg_png,startgamebg_jpg,startgamebtn_png",
+			"name": "preload"
+		},
+		{
+			"keys": "gifloadingbar0_png,gifloadingbar1_png,loadbg_jpg,loadingbar_png,loadingbarbg_png",
+			"name": "preloading"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description"
+		},
+		{
+			"url": "assets/gifloadingbar0.png",
+			"type": "image",
+			"name": "gifloadingbar0_png"
+		},
+		{
+			"url": "assets/gifloadingbar1.png",
+			"type": "image",
+			"name": "gifloadingbar1_png"
+		},
+		{
+			"url": "assets/loadbg.jpg",
+			"type": "image",
+			"name": "loadbg_jpg"
+		},
+		{
+			"url": "assets/loadingbar.png",
+			"type": "image",
+			"name": "loadingbar_png"
+		},
+		{
+			"url": "assets/loadingbarbg.png",
+			"type": "image",
+			"name": "loadingbarbg_png"
+		},
+		{
+			"url": "assets/pic/askerbg.jpg",
+			"type": "image",
+			"name": "askerbg_jpg"
+		},
+		{
+			"url": "assets/pic/askerbtn.png",
+			"type": "image",
+			"name": "askerbtn_png"
+		},
+		{
+			"url": "assets/pic/askerpic0.png",
+			"type": "image",
+			"name": "askerpic0_png"
+		},
+		{
+			"url": "assets/pic/askerpic1.png",
+			"type": "image",
+			"name": "askerpic1_png"
+		},
+		{
+			"url": "assets/pic/askerpic2.png",
+			"type": "image",
+			"name": "askerpic2_png"
+		},
+		{
+			"url": "assets/pic/askerpic3.png",
+			"type": "image",
+			"name": "askerpic3_png"
+		},
+		{
+			"url": "assets/pic/askerpic4.png",
+			"type": "image",
+			"name": "askerpic4_png"
+		},
+		{
+			"url": "assets/pic/askerselectp.png",
+			"type": "image",
+			"name": "askerselectp_png"
+		},
+		{
+			"url": "assets/pic/backbtn.png",
+			"type": "image",
+			"name": "backbtn_png"
+		},
+		{
+			"url": "assets/pic/checkbtn.png",
+			"type": "image",
+			"name": "checkbtn_png"
+		},
+		{
+			"url": "assets/pic/closebtn.png",
+			"type": "image",
+			"name": "closebtn_png"
+		},
+		{
+			"url": "assets/pic/donthavegzbtn.png",
+			"type": "image",
+			"name": "donthavegzbtn_png"
+		},
+		{
+			"url": "assets/pic/haibao0.jpg",
+			"type": "image",
+			"name": "haibao0_jpg"
+		},
+		{
+			"url": "assets/pic/haibao1.jpg",
+			"type": "image",
+			"name": "haibao1_jpg"
+		},
+		{
+			"url": "assets/pic/haibao2.jpg",
+			"type": "image",
+			"name": "haibao2_jpg"
+		},
+		{
+			"url": "assets/pic/haibao3.jpg",
+			"type": "image",
+			"name": "haibao3_jpg"
+		},
+		{
+			"url": "assets/pic/haibao4.jpg",
+			"type": "image",
+			"name": "haibao4_jpg"
+		},
+		{
+			"url": "assets/pic/havegzbtn.png",
+			"type": "image",
+			"name": "havegzbtn_png"
+		},
+		{
+			"url": "assets/pic/pic1.jpg",
+			"type": "image",
+			"name": "pic1_jpg"
+		},
+		{
+			"url": "assets/pic/pic10.jpg",
+			"type": "image",
+			"name": "pic10_jpg"
+		},
+		{
+			"url": "assets/pic/pic11.jpg",
+			"type": "image",
+			"name": "pic11_jpg"
+		},
+		{
+			"url": "assets/pic/pic12.jpg",
+			"type": "image",
+			"name": "pic12_jpg"
+		},
+		{
+			"url": "assets/pic/pic13.jpg",
+			"type": "image",
+			"name": "pic13_jpg"
+		},
+		{
+			"url": "assets/pic/pic14.jpg",
+			"type": "image",
+			"name": "pic14_jpg"
+		},
+		{
+			"url": "assets/pic/pic15.jpg",
+			"type": "image",
+			"name": "pic15_jpg"
+		},
+		{
+			"url": "assets/pic/pic16.jpg",
+			"type": "image",
+			"name": "pic16_jpg"
+		},
+		{
+			"url": "assets/pic/pic17.jpg",
+			"type": "image",
+			"name": "pic17_jpg"
+		},
+		{
+			"url": "assets/pic/pic18.jpg",
+			"type": "image",
+			"name": "pic18_jpg"
+		},
+		{
+			"url": "assets/pic/pic19.jpg",
+			"type": "image",
+			"name": "pic19_jpg"
+		},
+		{
+			"url": "assets/pic/pic2.jpg",
+			"type": "image",
+			"name": "pic2_jpg"
+		},
+		{
+			"url": "assets/pic/pic20.jpg",
+			"type": "image",
+			"name": "pic20_jpg"
+		},
+		{
+			"url": "assets/pic/pic21.jpg",
+			"type": "image",
+			"name": "pic21_jpg"
+		},
+		{
+			"url": "assets/pic/pic22.jpg",
+			"type": "image",
+			"name": "pic22_jpg"
+		},
+		{
+			"url": "assets/pic/pic23.jpg",
+			"type": "image",
+			"name": "pic23_jpg"
+		},
+		{
+			"url": "assets/pic/pic3.jpg",
+			"type": "image",
+			"name": "pic3_jpg"
+		},
+		{
+			"url": "assets/pic/pic4.jpg",
+			"type": "image",
+			"name": "pic4_jpg"
+		},
+		{
+			"url": "assets/pic/pic5.jpg",
+			"type": "image",
+			"name": "pic5_jpg"
+		},
+		{
+			"url": "assets/pic/pic6.jpg",
+			"type": "image",
+			"name": "pic6_jpg"
+		},
+		{
+			"url": "assets/pic/pic7.jpg",
+			"type": "image",
+			"name": "pic7_jpg"
+		},
+		{
+			"url": "assets/pic/pic8.jpg",
+			"type": "image",
+			"name": "pic8_jpg"
+		},
+		{
+			"url": "assets/pic/pic9.jpg",
+			"type": "image",
+			"name": "pic9_jpg"
+		},
+		{
+			"url": "assets/pic/quespic.jpg",
+			"type": "image",
+			"name": "quespic_jpg"
+		},
+		{
+			"url": "assets/pic/tipgz.png",
+			"type": "image",
+			"name": "tipgz_png"
+		},
+		{
+			"url": "assets/startbg.png",
+			"type": "image",
+			"name": "startbg_png"
+		},
+		{
+			"url": "assets/startgamebg.jpg",
+			"type": "image",
+			"name": "startgamebg_jpg"
+		},
+		{
+			"url": "assets/startgamebtn.png",
+			"type": "image",
+			"name": "startgamebtn_png"
+		}
+	]
+}

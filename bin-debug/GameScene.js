@@ -1,13 +1,16 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-var __extends = this && this.__extends || function __extends(t, e) { 
- function r() { 
- this.constructor = t;
-}
-for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
-r.prototype = e.prototype, t.prototype = new r();
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  * Create by hardy on 16/12/21
  * 主游戏场景
@@ -36,17 +39,66 @@ var GameScene = (function (_super) {
         GameData._i().GameScore = 0;
         GameData._i().GameLevel = 1;
         this.picNumber = 1;
-        this.DelayTime = 500; //1000
+        this.DelayTime = 100; //1000
     };
-    /**
-     * 显示背景
-     */
     GameScene.prototype.showbg = function () {
-        this.picControl = new MyBitmap(RES.getRes('pic1_jpg'), 0, 0);
-        this.picControl.setanchorOff(0, 0);
-        this.addChild(this.picControl);
-        egret.setTimeout(this.touchtap, this, this.DelayTime);
+        // this.picControl = new MyBitmap(RES.getRes('phonetip_jpg'), 0, 0);
+        // this.picControl.setanchorOff(0, 0);
+        // this.addChild(this.picControl);
+        //egret.setTimeout(this.touchtap, this, this.DelayTime);
         //this.addChild(GameScore._i());
+        var bg = new MyBitmap(RES.getRes('pic0_jpg'), 0, 0);
+        bg.setanchorOff(0, 0);
+        this.addChild(bg);
+        //-----------------新的---------------//
+        this.FirstContain = new egret.DisplayObjectContainer;
+        this.addChild(this.FirstContain);
+        this.SecondContain = new egret.DisplayObjectContainer;
+        this.addChild(this.SecondContain);
+        this.showLookphone();
+    };
+    GameScene.prototype.showLookphone = function () {
+        var lookphone = new MyBitmap(RES.getRes('lookphone_png'), this.mStageW / 2, this.mStageH / 2);
+        lookphone.$setScaleX(1.4);
+        lookphone.$setScaleY(1.4);
+        this.FirstContain.addChild(lookphone);
+        egret.Tween.get(lookphone).to({ scaleX: 1, scaleY: 1 }, 500).wait(500).call(this.showmsg, this, [0]);
+    };
+    GameScene.prototype.showmsg = function (id) {
+        var _this = this;
+        var pos = [[430, 297], [109, 359], [109, 430]];
+        var img = new MyBitmap(RES.getRes('showmsg' + id + '_png'), pos[id][0], pos[id][1]);
+        img.setanchorOff(0, 0.5);
+        this.FirstContain.addChild(img);
+        id++;
+        egret.setTimeout(function () { if (id > 2) {
+            _this.showamazing();
+        }
+        else
+            (_this.showmsg(id)); }, this, 1000);
+    };
+    GameScene.prototype.showamazing = function () {
+        var img = new MyBitmap(RES.getRes('pic1_jpg'), this.mStageW / 2, this.mStageH / 2);
+        this.SecondContain.addChild(img);
+        egret.setTimeout(this.showresb, this, 1000);
+    };
+    GameScene.prototype.showresb = function () {
+        var _this = this;
+        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(function () { _this.showresbtap(0); }, this);
+        //this.showresbtap(0);
+    };
+    GameScene.prototype.showresbtap = function (id) {
+        var _this = this;
+        var img = new MyBitmap(RES.getRes('resbtpic' + id + '_png'), 169, 553);
+        img.setanchorOff(0, 0.5);
+        this.FirstContain.addChild(img);
+        id++;
+        egret.setTimeout(function () { if (id > 2) { }
+        else {
+            console.log('id===', id);
+            _this.FirstContain.removeChild(img);
+            egret.setTimeout(function () { _this.showresbtap(id); }, _this, 1000);
+        } ; }, this, 1000);
     };
     /**
      * 游戏定时器
