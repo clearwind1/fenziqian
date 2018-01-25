@@ -63,12 +63,12 @@ class StartGameScene extends GameUtil.BassPanel {
         btn.y = 654;
         this.addChild(btn);
         btn.scaleX = btn.scaleY = 0;
-        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 600);
+        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400);
 
         var tip: MyBitmap = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
         this.addChild(tip);
 
-        egret.Tween.get(tip, { loop: true }).to({ alpha: 0 }, 0).wait(400).to({ alpha: 1 }, 0).wait(400);
+        egret.Tween.get(tip, { loop: true }).to({ scaleX: 1.1,scaleY:1.1 }, 500).to({ scaleX: 1,scaleY:1 }, 500);
 
     }
 
