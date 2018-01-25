@@ -51,6 +51,7 @@ class StartGameScene extends GameUtil.BassPanel {
         // this.addChild(startbtn);
 
         //------------------新的---------------------------//
+        //消息提示
         var shap: MyBitmap = new MyBitmap(RES.getRes('phonetip_jpg'), 0, 0);
         shap.setanchorOff(0, 0);
         shap.width = this.mStageW;

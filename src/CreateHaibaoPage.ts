@@ -69,7 +69,7 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		this.removeChild(this.tipContain);
 	}
 	private jumpgz() {
-		//window.location.href = "https://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzAxNDQyMjM4Ng==#wechat_webview_type=1&wechat_redirect";
+		window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
 	}
 
 	private backgamescene() {

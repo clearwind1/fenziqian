@@ -69,7 +69,7 @@ var CreateHaibaoPage = (function (_super) {
         this.removeChild(this.tipContain);
     };
     CreateHaibaoPage.prototype.jumpgz = function () {
-        //window.location.href = "https://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzAxNDQyMjM4Ng==#wechat_webview_type=1&wechat_redirect";
+        window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
     };
     CreateHaibaoPage.prototype.backgamescene = function () {
         GameUtil.GameScene.runscene(new GameScene());
