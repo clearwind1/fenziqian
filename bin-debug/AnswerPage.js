@@ -42,6 +42,7 @@ var AnswerPage = (function (_super) {
     };
     AnswerPage.prototype.selectC = function (id) {
         console.log('selectid====', id);
+        GameData._i().gamesound[SoundName.s26].play();
         this.selectID = id;
         this.selectP.y = 748 + id * 76;
     };
@@ -74,4 +75,3 @@ var AnswerPage = (function (_super) {
     return AnswerPage;
 }(GameUtil.BassPanel));
 __reflect(AnswerPage.prototype, "AnswerPage");
-//# sourceMappingURL=AnswerPage.js.map

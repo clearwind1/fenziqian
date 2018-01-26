@@ -135,4 +135,3 @@ var SharePage = (function (_super) {
     return SharePage;
 }(egret.DisplayObjectContainer));
 __reflect(SharePage.prototype, "SharePage");
-//# sourceMappingURL=SharePage.js.map

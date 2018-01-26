@@ -36,6 +36,7 @@ class AnswerPage extends GameUtil.BassPanel {
 
 	private selectC(id) {
 		console.log('selectid====', id);
+		GameData._i().gamesound[SoundName.s26].play();
 		this.selectID = id;
 		this.selectP.y = 748 + id * 76;
 	}

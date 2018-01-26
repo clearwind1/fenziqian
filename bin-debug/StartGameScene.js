@@ -20,7 +20,7 @@ var StartGameScene = (function (_super) {
         return _super.call(this) || this;
     }
     StartGameScene.prototype.init = function () {
-        BGMPlayer._i().play(SoundName.startgamebgm);
+        // BGMPlayer._i().play(SoundName.sbgm);
         var data = {
             'code': 1
         };
@@ -65,8 +65,9 @@ var StartGameScene = (function (_super) {
         btn.x = this.mStageW / 2;
         btn.y = 654;
         this.addChild(btn);
-        btn.scaleX = btn.scaleY = 0;
+        btn.scaleX = btn.scaleY = 0.4;
         egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400);
+        GameData._i().gamesound[SoundName.s1].play();
         var tip = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
         this.addChild(tip);
         egret.Tween.get(tip, { loop: true }).to({ scaleX: 1.1, scaleY: 1.1 }, 500).to({ scaleX: 1, scaleY: 1 }, 500);
@@ -98,4 +99,3 @@ var StartGameScene = (function (_super) {
     return StartGameScene;
 }(GameUtil.BassPanel));
 __reflect(StartGameScene.prototype, "StartGameScene");
-//# sourceMappingURL=StartGameScene.js.map

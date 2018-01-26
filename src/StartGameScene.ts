@@ -9,7 +9,7 @@ class StartGameScene extends GameUtil.BassPanel {
     }
 
     public init() {
-        BGMPlayer._i().play(SoundName.startgamebgm);
+       // BGMPlayer._i().play(SoundName.sbgm);
         var data: any = {
             'code': 1
         };
@@ -62,8 +62,9 @@ class StartGameScene extends GameUtil.BassPanel {
         btn.x = this.mStageW / 2;
         btn.y = 654;
         this.addChild(btn);
-        btn.scaleX = btn.scaleY = 0;
+        btn.scaleX = btn.scaleY = 0.4;
         egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400);
+        GameData._i().gamesound[SoundName.s1].play();
 
         var tip: MyBitmap = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
         this.addChild(tip);

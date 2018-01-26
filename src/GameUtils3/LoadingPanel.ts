@@ -9,6 +9,7 @@ module GameUtil {
     export class LoadingPanel extends GameUtil.BassPanel {
         private loadingView: LoadingUI;
         private loadingbar: MyBitmap;
+        private loadingmask: egret.Shape;
         private gifloadingbar: MyBitmap;
         private loadedfun: Function;
         private thisObj: any;
@@ -57,27 +58,32 @@ module GameUtil {
 
                 var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
                 loadbgpic.setanchorOff(0, 0);
-                this.addChild(loadbgpic);                
+                this.addChild(loadbgpic);
 
                 var loadingbgbar = new MyBitmap(RES.getRes('loadingbarbg_png'), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 loadingbgbar.x = (this.mStageW - loadingbgbar.texture.textureWidth) / 2;
                 loadingbgbar.anchorOffsetX = 0;
                 this.addChild(loadingbgbar);
 
+
                 this.loadingbar = new MyBitmap(RES.getRes("loadingbar_png"), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 this.loadingbar.x = (this.mStageW - this.loadingbar.texture.textureWidth) / 2;
                 this.loadingbar.anchorOffsetX = 0;
-                var w: number = this.loadingbar.texture.textureWidth - 8;
-                var h: number = this.loadingbar.texture.textureHeight - 8;
-                var rect: egret.Rectangle = new egret.Rectangle(4, 4, w, h);
-                this.loadingbar.scale9Grid = rect;
                 this.addChild(this.loadingbar);
-                this.loadingbar.width = 10;
+                this.loadingmask = GameUtil.createRect(this.loadingbar.x - this.loadingbar.width, this.loadingbar.y - this.loadingbar.height / 2, this.loadingbar.width, this.loadingbar.height);
+                this.addChild(this.loadingmask);
+                this.loadingbar.mask = this.loadingmask;
 
                 this.gifruncount = 0;
                 this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar0_png"), this.loadingbar.x + 60, this.loadingbar.y - 100);
                 this.addChild(this.gifloadingbar);
                 egret.setInterval(this.rungif, this, 150);
+
+                var logo = new MyBitmap(RES.getRes('logo_png'), this.mStageW / 2, this.loadingbar.y + 100);
+                this.addChild(logo);
+                logo.alpha = 0;
+                egret.Tween.get(logo).to({ alpha: 1 }, 500);
+
             }
 
             //Config to load process interface
@@ -129,12 +135,7 @@ module GameUtil {
                 RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
                 RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
 
-                //if(GameUtil.GameConfig.bRunFPS)
-                //    egret.Profiler.run();
-
                 this.loadedfun.apply(this.thisObj);
-
-                //this.parent.removeChild(this);
             }
         }
 
@@ -164,8 +165,9 @@ module GameUtil {
         }
 
         public setPro(persend: number): void {
-            this.loadingbar.width = this.loadingbar.texture.textureWidth * persend;
-            this.gifloadingbar.x = this.loadingbar.x + this.loadingbar.width;
+            var dis = this.loadingbar.texture.textureWidth * persend;
+            this.loadingmask.x = this.loadingbar.x - this.loadingbar.width + dis;
+            this.gifloadingbar.x = this.loadingbar.x + dis;
             //console.log("this.width=====",this.width);
         }
 

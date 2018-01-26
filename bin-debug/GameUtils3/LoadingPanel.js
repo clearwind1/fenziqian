@@ -69,16 +69,18 @@ var GameUtil;
                 this.loadingbar = new MyBitmap(RES.getRes("loadingbar_png"), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 this.loadingbar.x = (this.mStageW - this.loadingbar.texture.textureWidth) / 2;
                 this.loadingbar.anchorOffsetX = 0;
-                var w = this.loadingbar.texture.textureWidth - 8;
-                var h = this.loadingbar.texture.textureHeight - 8;
-                var rect = new egret.Rectangle(4, 4, w, h);
-                this.loadingbar.scale9Grid = rect;
                 this.addChild(this.loadingbar);
-                this.loadingbar.width = 10;
+                this.loadingmask = GameUtil.createRect(this.loadingbar.x - this.loadingbar.width, this.loadingbar.y - this.loadingbar.height / 2, this.loadingbar.width, this.loadingbar.height);
+                this.addChild(this.loadingmask);
+                this.loadingbar.mask = this.loadingmask;
                 this.gifruncount = 0;
                 this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar0_png"), this.loadingbar.x + 60, this.loadingbar.y - 100);
                 this.addChild(this.gifloadingbar);
                 egret.setInterval(this.rungif, this, 150);
+                var logo = new MyBitmap(RES.getRes('logo_png'), this.mStageW / 2, this.loadingbar.y + 100);
+                this.addChild(logo);
+                logo.alpha = 0;
+                egret.Tween.get(logo).to({ alpha: 1 }, 500);
             }
             //Config to load process interface
             this.loadingView = new LoadingUI();
@@ -122,10 +124,7 @@ var GameUtil;
                 RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
                 RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
                 RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-                //if(GameUtil.GameConfig.bRunFPS)
-                //    egret.Profiler.run();
                 this.loadedfun.apply(this.thisObj);
-                //this.parent.removeChild(this);
             }
         };
         /**
@@ -152,8 +151,9 @@ var GameUtil;
             }
         };
         LoadingPanel.prototype.setPro = function (persend) {
-            this.loadingbar.width = this.loadingbar.texture.textureWidth * persend;
-            this.gifloadingbar.x = this.loadingbar.x + this.loadingbar.width;
+            var dis = this.loadingbar.texture.textureWidth * persend;
+            this.loadingmask.x = this.loadingbar.x - this.loadingbar.width + dis;
+            this.gifloadingbar.x = this.loadingbar.x + dis;
             //console.log("this.width=====",this.width);
         };
         LoadingPanel.prototype.getPro = function () {
@@ -164,4 +164,3 @@ var GameUtil;
     GameUtil.LoadingPanel = LoadingPanel;
     __reflect(LoadingPanel.prototype, "GameUtil.LoadingPanel");
 })(GameUtil || (GameUtil = {}));
-//# sourceMappingURL=LoadingPanel.js.map
