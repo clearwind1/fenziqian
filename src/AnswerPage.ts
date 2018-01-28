@@ -45,7 +45,7 @@ class AnswerPage extends GameUtil.BassPanel {
 		var param: Object = {
             option: (this.selectID+1)
         }
-		GameUtil.Http.getinstance().send(param, 'tingfeng.free.ngrok.cc/api/submitAnswer', this.updone, this,'');
+		GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this);
 		
 		//GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
 	}

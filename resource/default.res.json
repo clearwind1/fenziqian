@@ -1,12 +1,20 @@
 {
 	"groups": [
 		{
-			"keys": "askerbg_jpg,askerbtn_png,askerpic0_png,askerpic1_png,askerpic2_png,askerpic3_png,askerpic4_png,askerselectp_png,backbtn_png,checkbtn_png,closebtn_png,donthavegzbtn_png,haibao0_jpg,haibao1_jpg,haibao2_jpg,haibao3_jpg,haibao4_jpg,havegzbtn_png,pic10_jpg,pic11_jpg,pic12_jpg,pic13_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic17_jpg,pic18_jpg,pic19_jpg,pic20_jpg,pic21_jpg,pic22_jpg,pic23_jpg,pic7_jpg,pic8_jpg,pic9_jpg,quespic_jpg,tipgz_png,startbg_png,startgamebg_jpg,startgamebtn_png,msgtip_png,phonetip_jpg,tiptxt_png,lookphone_png,showmsg0_png,showmsg1_png,showmsg2_png,pic0_jpg,resbtpic0_png,resbtpic1_png,resbtpic2_png,pic5_0_png,pic5_qt_png,pic5_tq_png,pic5_1_png,pic5_2_png,pic0_0_png,pic0_1_png,pic6_0_png,pic6_1_png,pic6_2_png,cripic0_png,cripic1_png,cripic2_png,cripic3_png,cripic4_png,cripic5_png,pic7_0_jpg,pic7_1_png,pic8_0_png,pic8_1_png,cripic6_png,pic9_0_png,pic9_1_png,cripic7_png,pic10_1_png,pic10_3_png,pic10_2_png,pic10_4_png,pic10_5_png,pic10_6_png,cripic8_png,cripic9_png,pic11_1_png,pic11_2_png,pic12_0_png,pic12_1_png,pic12_2_png,pic12_3_png,cripic10_png,pic13_1_png,pic13_2_png,pic13_3_png,pic13_4_png,cripic11_png,pic14_0_png,pic14_1_png,pic14_2_png,pic14_4_png,pic14_3_png,pic14_5_png,pic14_6_png,pic14_8_png,pic14_7_png,pic14_9_png,pic14_10_png,pic14_11_png,pic14_12_png,cripic12_png,pic15_1_png,pic15_2_png,pic15_3_png,pic15_4_png,cripic13_png,pic15_5_png,pic16_1_png,pic16_3_png,pic16_4_png,pic16_2_png,cripic14_png,cripic15_png,pic17_0_png,pic17_1_png,pic17_2_png,pic17_3_png,pic17_4_png,pic17_6_png,pic17_7_png,pic17_8_png,pic17_9_png,pic17_10_png,pic17_11_png,pic17_12_png,pic17_13_png,pic17_14_png,pic17_15_png,pic17_16_png,pic17_17_png,pic17_18_png,pic17_19_png,pic17_20_png,pic17_21_png,pic17_22_png,pic17_23_png,pic17_24_png,pic17_5_png,pic18_0_jpg,pic18_0_png,pic18_1_jpg,pic23_0_jpg,pic23_1_jpg,pic23_2_jpg,pic23_3_jpg,pic24_0_jpg,pic24_1_jpg,pic7_2_png,pic7_3_png,pic7_4_png,pic8_2_png,pic8_3_png,pic8_4_png,pic8_5_png",
+			"keys": "showmsg0_png,showmsg1_png,showmsg2_png,cripic1_png,cripic2_png,cripic3_png,cripic4_png,cripic5_png,msgtip_png,phonetip_jpg,tiptxt_png,lookphone_png,pic0_jpg,resbtpic0_png,resbtpic1_png,resbtpic2_png,pic5_0_png,pic5_qt_png,pic5_tq_png,pic5_1_png,pic5_2_png,pic0_0_png,pic0_1_png,pic6_0_png,pic6_1_png,pic6_2_png,cripic0_png,pic7_0_jpg,pic7_1_png,pic8_0_png,pic8_1_png,cripic6_png,pic9_0_png,pic9_1_png,cripic7_png,pic10_1_png,pic10_3_png,pic10_2_png,pic10_4_png,pic10_5_png,cripic8_png,cripic9_png,pic11_1_png,pic11_2_png,pic12_0_png,pic12_1_png,pic12_2_png,pic12_3_png,cripic10_png,pic7_2_png,pic7_3_png,pic7_4_png,pic8_2_png,pic8_3_png,pic8_4_png,pic8_5_png,pic10_jpg,pic11_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic7_jpg,pic8_jpg,pic9_jpg",
 			"name": "preload"
 		},
 		{
-			"keys": "gifloadingbar0_png,gifloadingbar1_png,loadbg_jpg,loadingbar_png,loadingbarbg_png,logo_png",
+			"keys": "gifloadingbar1_png,gifloadingbar2_png,loadingbar_png,loadingbarbg_png,logo_png",
 			"name": "preloading"
+		},
+		{
+			"keys": "quespic_jpg,askerbg_jpg,askerbtn_png,askerpic0_png,askerpic1_png,askerpic2_png,askerpic3_png,askerpic4_png,askerselectp_png,backbtn_png,checkbtn_png,closebtn_png,donthavegzbtn_png,haibao0_jpg,haibao1_jpg,haibao2_jpg,haibao3_jpg,haibao4_jpg,havegzbtn_png,tipgz_png",
+			"name": "load2"
+		},
+		{
+			"keys": "pic13_1_png,pic13_2_png,pic13_3_png,pic13_4_png,cripic11_png,pic14_0_png,pic14_1_png,pic14_2_png,pic14_4_png,pic14_3_png,pic14_5_png,pic14_6_png,pic14_8_png,pic14_7_png,pic14_9_png,pic14_10_png,pic14_11_png,pic14_12_png,cripic12_png,cripic13_png,pic15_1_png,pic15_2_png,pic15_3_png,pic15_4_png,pic15_5_png,pic16_1_png,pic16_3_png,pic16_4_png,pic16_2_png,cripic14_png,cripic15_png,pic17_0_png,pic17_1_png,pic17_2_png,pic17_3_png,pic17_4_png,pic17_6_png,pic17_7_png,pic17_8_png,pic17_9_png,pic17_10_png,pic17_11_png,pic17_12_png,pic17_13_png,pic17_14_png,pic17_15_png,pic17_16_png,pic17_17_png,pic17_18_png,pic17_19_png,pic17_20_png,pic17_21_png,pic17_22_png,pic17_23_png,pic17_24_png,pic17_5_png,pic18_0_jpg,pic18_0_png,pic18_1_jpg,pic19_jpg,pic20_jpg,pic21_jpg,pic22_jpg,pic23_0_jpg,pic23_1_jpg,pic23_2_jpg,pic23_3_jpg,pic24_0_jpg,pic24_1_jpg",
+			"name": "load1"
 		}
 	],
 	"resources": [
@@ -16,19 +24,9 @@
 			"name": "description"
 		},
 		{
-			"url": "assets/gifloadingbar0.png",
-			"type": "image",
-			"name": "gifloadingbar0_png"
-		},
-		{
 			"url": "assets/gifloadingbar1.png",
 			"type": "image",
 			"name": "gifloadingbar1_png"
-		},
-		{
-			"url": "assets/loadbg.jpg",
-			"type": "image",
-			"name": "loadbg_jpg"
 		},
 		{
 			"url": "assets/loadingbar.png",
@@ -141,16 +139,6 @@
 			"name": "pic11_jpg"
 		},
 		{
-			"url": "assets/pic/pic12.jpg",
-			"type": "image",
-			"name": "pic12_jpg"
-		},
-		{
-			"url": "assets/pic/pic13.jpg",
-			"type": "image",
-			"name": "pic13_jpg"
-		},
-		{
 			"url": "assets/pic/pic14.jpg",
 			"type": "image",
 			"name": "pic14_jpg"
@@ -164,16 +152,6 @@
 			"url": "assets/pic/pic16.jpg",
 			"type": "image",
 			"name": "pic16_jpg"
-		},
-		{
-			"url": "assets/pic/pic17.jpg",
-			"type": "image",
-			"name": "pic17_jpg"
-		},
-		{
-			"url": "assets/pic/pic18.jpg",
-			"type": "image",
-			"name": "pic18_jpg"
 		},
 		{
 			"url": "assets/pic/pic19.jpg",
@@ -194,11 +172,6 @@
 			"url": "assets/pic/pic22.jpg",
 			"type": "image",
 			"name": "pic22_jpg"
-		},
-		{
-			"url": "assets/pic/pic23.jpg",
-			"type": "image",
-			"name": "pic23_jpg"
 		},
 		{
 			"url": "assets/pic/pic7.jpg",
@@ -224,21 +197,6 @@
 			"url": "assets/pic/tipgz.png",
 			"type": "image",
 			"name": "tipgz_png"
-		},
-		{
-			"url": "assets/startbg.png",
-			"type": "image",
-			"name": "startbg_png"
-		},
-		{
-			"url": "assets/startgamebg.jpg",
-			"type": "image",
-			"name": "startgamebg_jpg"
-		},
-		{
-			"name": "startgamebtn_png",
-			"type": "image",
-			"url": "assets/startgamebtn.png"
 		},
 		{
 			"name": "msgtip_png",
@@ -439,11 +397,6 @@
 			"name": "pic10_5_png",
 			"type": "image",
 			"url": "assets/pic/pic10_5.png"
-		},
-		{
-			"name": "pic10_6_png",
-			"type": "image",
-			"url": "assets/pic/pic10_6.png"
 		},
 		{
 			"name": "cripic8_png",
@@ -854,6 +807,11 @@
 			"name": "pic8_5_png",
 			"type": "image",
 			"url": "assets/pic/pic8_5.png"
+		},
+		{
+			"name": "gifloadingbar2_png",
+			"type": "image",
+			"url": "assets/gifloadingbar2.png"
 		}
 	]
 }

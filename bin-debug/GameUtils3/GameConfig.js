@@ -8,21 +8,21 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 /**声音文件枚举 */
 var SoundName;
 (function (SoundName) {
-    SoundName[SoundName["s19bgm"] = 0] = "s19bgm";
-    SoundName[SoundName["sbgm"] = 1] = "sbgm";
-    SoundName[SoundName["s1"] = 2] = "s1";
-    SoundName[SoundName["s2_1"] = 3] = "s2_1";
-    SoundName[SoundName["s2"] = 4] = "s2";
-    SoundName[SoundName["s3"] = 5] = "s3";
-    SoundName[SoundName["s5"] = 6] = "s5";
-    SoundName[SoundName["s10"] = 7] = "s10";
-    SoundName[SoundName["s12"] = 8] = "s12";
-    SoundName[SoundName["s13"] = 9] = "s13";
-    SoundName[SoundName["s15"] = 10] = "s15";
-    SoundName[SoundName["s19"] = 11] = "s19";
-    SoundName[SoundName["s20"] = 12] = "s20";
-    SoundName[SoundName["s21"] = 13] = "s21";
-    SoundName[SoundName["s22"] = 14] = "s22";
+    SoundName[SoundName["s27bgm"] = 0] = "s27bgm";
+    SoundName[SoundName["s19bgm"] = 1] = "s19bgm";
+    SoundName[SoundName["sbgm"] = 2] = "sbgm";
+    SoundName[SoundName["s1"] = 3] = "s1";
+    SoundName[SoundName["s2_1"] = 4] = "s2_1";
+    SoundName[SoundName["s2"] = 5] = "s2";
+    SoundName[SoundName["s3"] = 6] = "s3";
+    SoundName[SoundName["s5"] = 7] = "s5";
+    SoundName[SoundName["s10"] = 8] = "s10";
+    SoundName[SoundName["s12"] = 9] = "s12";
+    SoundName[SoundName["s13"] = 10] = "s13";
+    SoundName[SoundName["s15"] = 11] = "s15";
+    SoundName[SoundName["s19"] = 12] = "s19";
+    SoundName[SoundName["s20"] = 13] = "s20";
+    SoundName[SoundName["s21"] = 14] = "s21";
     SoundName[SoundName["s24"] = 15] = "s24";
     SoundName[SoundName["s26"] = 16] = "s26";
     SoundName[SoundName["end"] = 17] = "end";
@@ -70,7 +70,7 @@ var GameConfig = (function () {
     };
     /**基本配置 */
     GameConfig.DEBUG = true;
-    GameConfig.IP = "api.h5.gamexun.com"; //http连接地址
+    GameConfig.IP = "tingfeng.tristana.cn"; //http连接地址
     GameConfig.GAMENAME = '份子钱大调查'; //游戏在服务器上的名字
     GameConfig.SERVERNAME = 'children'; //服务器连接名
     GameConfig.FIRSTGAME = 'firstgame'; //第一次进游戏标示
@@ -79,7 +79,7 @@ var GameConfig = (function () {
     GameConfig.GAMELEVEL = 'gamelevel'; //游戏等级
     GameConfig.IsLoadSound = true; //是否加载声音
     GameConfig.SoundName = [
-        's19bgm.mp3', 'sbgm.mp3', 's1.mp3', 's2_1.mp3', 's2.mp3', 's3.mp3', 's5.mp3', 's10.mp3', 's12.mp3', 's13.mp3', 's15.mp3', 's19.mp3', 's20.mp3', 's21.mp3', 's22.mp3', 's24.mp3', 's26.mp3'
+        's27bgm.mp3', 's19bgm.mp3', 'sbgm.mp3', 's1.mp3', 's2_1.mp3', 's2.mp3', 's3.mp3', 's5.mp3', 's10.mp3', 's12.mp3', 's13.mp3', 's15.mp3', 's19.mp3', 's20.mp3', 's21.mp3', 's24.mp3', 's26.mp3'
         // 'die.mp3', 'fail.mp3', 'goal.mp3', 'beatt.mp3', 'click.mp3'
     ];
     GameConfig.MoreGameName = [];
@@ -105,3 +105,4 @@ var GameConfig = (function () {
     return GameConfig;
 }());
 __reflect(GameConfig.prototype, "GameConfig");
+//# sourceMappingURL=GameConfig.js.map

@@ -22,13 +22,14 @@ var BGMPlayer = (function () {
         GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
     };
     /**播放背景音乐 */
-    BGMPlayer.prototype.play = function (bgmName) {
+    BGMPlayer.prototype.play = function (bgmName, loop) {
+        if (loop === void 0) { loop = -1; }
         if (this.curbgmtag != -1 && GameData._i().gamesound[this.curbgmtag]) {
             GameData._i().gamesound[this.curbgmtag].stop();
         }
         this.curbgmtag = bgmName;
         if (GameData._i().gamesound[this.curbgmtag]) {
-            GameData._i().gamesound[this.curbgmtag].play(0, -1);
+            GameData._i().gamesound[this.curbgmtag].play(0, loop);
             GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
         }
     };
@@ -42,3 +43,4 @@ var BGMPlayer = (function () {
     return BGMPlayer;
 }());
 __reflect(BGMPlayer.prototype, "BGMPlayer");
+//# sourceMappingURL=BGMPlayer.js.map

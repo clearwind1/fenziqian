@@ -3,7 +3,6 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 	private selectID: number = 0;
 	private tipContain: egret.DisplayObjectContainer;
 	public constructor(selectid: number) {
-
 		super();
 		this.selectID = selectid;
 	}

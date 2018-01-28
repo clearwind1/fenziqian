@@ -51,7 +51,7 @@ var AnswerPage = (function (_super) {
         var param = {
             option: (this.selectID + 1)
         };
-        GameUtil.Http.getinstance().send(param, 'tingfeng.free.ngrok.cc/api/submitAnswer', this.updone, this, '');
+        GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this);
         //GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
     };
     AnswerPage.prototype.updone = function (data) {
@@ -75,3 +75,4 @@ var AnswerPage = (function (_super) {
     return AnswerPage;
 }(GameUtil.BassPanel));
 __reflect(AnswerPage.prototype, "AnswerPage");
+//# sourceMappingURL=AnswerPage.js.map

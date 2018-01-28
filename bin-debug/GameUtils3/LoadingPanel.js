@@ -26,7 +26,7 @@ var GameUtil;
             if (offx === void 0) { offx = 0; }
             if (offy === void 0) { offy = 0; }
             if (isgif === void 0) { isgif = false; }
-            if (gifTotal === void 0) { gifTotal = 2; }
+            if (gifTotal === void 0) { gifTotal = 3; }
             var _this = _super.call(this) || this;
             _this.loadedfun = fun;
             _this.thisObj = obj;
@@ -39,8 +39,6 @@ var GameUtil;
         LoadingPanel.prototype.init = function () {
             //RES.getResByUrl(this.imageUrl,this.onComplete,this,RES.ResourceItem.TYPE_IMAGE);
             new GameUtil.LoadingLogopre(this.onComplete, this);
-            if (GameConfig.IsLoadSound)
-                this.loadsound();
         };
         LoadingPanel.prototype.loadsound = function () {
             for (var i = 0; i < GameConfig.SoundName.length; i++) {
@@ -51,7 +49,8 @@ var GameUtil;
             }
         };
         LoadingPanel.prototype.onComplete = function (event) {
-            //console.log("onComplete");
+            console.log("(document.getElementById('logo'))");
+            (document.getElementById('logo')).style.display = 'none';
             if (this.IsGif) {
                 this.gifruncount = 0;
                 this.loadingbar = new MyBitmap(RES.getRes("loadinggif0_png"), this.mStageW / 2 + this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
@@ -59,9 +58,11 @@ var GameUtil;
                 egret.setInterval(this.rungif, this, 150);
             }
             else {
-                var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
-                loadbgpic.setanchorOff(0, 0);
-                this.addChild(loadbgpic);
+                // var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
+                // loadbgpic.setanchorOff(0, 0);
+                // this.addChild(loadbgpic);
+                if (GameConfig.IsLoadSound)
+                    this.loadsound();
                 var loadingbgbar = new MyBitmap(RES.getRes('loadingbarbg_png'), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 loadingbgbar.x = (this.mStageW - loadingbgbar.texture.textureWidth) / 2;
                 loadingbgbar.anchorOffsetX = 0;
@@ -74,7 +75,7 @@ var GameUtil;
                 this.addChild(this.loadingmask);
                 this.loadingbar.mask = this.loadingmask;
                 this.gifruncount = 0;
-                this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar0_png"), this.loadingbar.x + 60, this.loadingbar.y - 100);
+                this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar1_png"), this.loadingbar.x, this.loadingbar.y - 100);
                 this.addChild(this.gifloadingbar);
                 egret.setInterval(this.rungif, this, 150);
                 var logo = new MyBitmap(RES.getRes('logo_png'), this.mStageW / 2, this.loadingbar.y + 100);
@@ -93,7 +94,7 @@ var GameUtil;
         LoadingPanel.prototype.rungif = function () {
             this.gifruncount++;
             if (this.gifruncount >= this.gifTotalcount) {
-                this.gifruncount = 0;
+                this.gifruncount = 1;
             }
             this.gifloadingbar.setNewTexture(RES.getRes("gifloadingbar" + this.gifruncount + "_png"));
         };
@@ -120,11 +121,16 @@ var GameUtil;
          * Preload resource group is loaded
          */
         LoadingPanel.prototype.onResourceLoadComplete = function (event) {
+            var _this = this;
             if (event.groupName == "preload") {
                 RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
                 RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
                 RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
                 this.loadedfun.apply(this.thisObj);
+                new GameUtil.LoadingLogopre(function () {
+                    console.log('load1');
+                    new GameUtil.LoadingLogopre(function () { console.log('load2'); }, _this, 'load2');
+                }, this, 'load1');
             }
         };
         /**
@@ -164,3 +170,4 @@ var GameUtil;
     GameUtil.LoadingPanel = LoadingPanel;
     __reflect(LoadingPanel.prototype, "GameUtil.LoadingPanel");
 })(GameUtil || (GameUtil = {}));
+//# sourceMappingURL=LoadingPanel.js.map

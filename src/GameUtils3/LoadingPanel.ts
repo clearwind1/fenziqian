@@ -19,7 +19,7 @@ module GameUtil {
         private loadingbarOffX: number;
         private loadingbarOffY: number;
 
-        public constructor(fun: Function, obj: any, offx = 0, offy = 0, isgif: boolean = false, gifTotal: number = 2) {
+        public constructor(fun: Function, obj: any, offx = 0, offy = 0, isgif: boolean = false, gifTotal: number = 3) {
             super();
 
             this.loadedfun = fun;
@@ -34,7 +34,6 @@ module GameUtil {
         public init(): void {
             //RES.getResByUrl(this.imageUrl,this.onComplete,this,RES.ResourceItem.TYPE_IMAGE);
             new GameUtil.LoadingLogopre(this.onComplete, this);
-            if (GameConfig.IsLoadSound) this.loadsound();
         }
         private loadsound() {
             for (var i: number = 0; i < GameConfig.SoundName.length; i++) {
@@ -46,8 +45,8 @@ module GameUtil {
         }
 
         private onComplete(event: any): void {
-            //console.log("onComplete");
-
+            console.log("(document.getElementById('logo'))");
+            (document.getElementById('logo')).style.display = 'none';
             if (this.IsGif) {
                 this.gifruncount = 0;
                 this.loadingbar = new MyBitmap(RES.getRes("loadinggif0_png"), this.mStageW / 2 + this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
@@ -56,9 +55,11 @@ module GameUtil {
             }
             else {
 
-                var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
-                loadbgpic.setanchorOff(0, 0);
-                this.addChild(loadbgpic);
+                // var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
+                // loadbgpic.setanchorOff(0, 0);
+                // this.addChild(loadbgpic);
+
+                if (GameConfig.IsLoadSound) this.loadsound();
 
                 var loadingbgbar = new MyBitmap(RES.getRes('loadingbarbg_png'), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 loadingbgbar.x = (this.mStageW - loadingbgbar.texture.textureWidth) / 2;
@@ -75,7 +76,7 @@ module GameUtil {
                 this.loadingbar.mask = this.loadingmask;
 
                 this.gifruncount = 0;
-                this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar0_png"), this.loadingbar.x + 60, this.loadingbar.y - 100);
+                this.gifloadingbar = new MyBitmap(RES.getRes("gifloadingbar1_png"), this.loadingbar.x, this.loadingbar.y - 100);
                 this.addChild(this.gifloadingbar);
                 egret.setInterval(this.rungif, this, 150);
 
@@ -100,7 +101,7 @@ module GameUtil {
         private rungif(): void {
             this.gifruncount++;
             if (this.gifruncount >= this.gifTotalcount) {
-                this.gifruncount = 0;
+                this.gifruncount = 1;
             }
             this.gifloadingbar.setNewTexture(RES.getRes("gifloadingbar" + this.gifruncount + "_png"));
         }
@@ -136,6 +137,10 @@ module GameUtil {
                 RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
 
                 this.loadedfun.apply(this.thisObj);
+                new GameUtil.LoadingLogopre(() => {
+                    console.log('load1');
+                    new GameUtil.LoadingLogopre(() => { console.log('load2') }, this, 'load2');
+                }, this, 'load1');
             }
         }
 

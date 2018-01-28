@@ -4,14 +4,14 @@
  */
 
 /**声音文件枚举 */
-enum SoundName { s19bgm, sbgm,s1,s2_1,s2,s3,s5,s10,s12,s13,s15,s19,s20,s21,s22,s24,s26, end };
+enum SoundName { s27bgm,s19bgm, sbgm, s1, s2_1, s2, s3, s5, s10, s12, s13, s15, s19, s20, s21, s24, s26,  end };
 /**场景转换效果，对应：无效果，从左往右，淡入淡出，向两边分开 */
 enum SceneEffect { NullAction, CrossLeft, TransAlpha, OpenDoor };
 
 class GameConfig {
     /**基本配置 */
     public static DEBUG: boolean = true;
-    public static IP: string = "api.h5.gamexun.com";        //http连接地址
+    public static IP: string = "tingfeng.tristana.cn";        //http连接地址
     public static GAMENAME: string = '份子钱大调查';           //游戏在服务器上的名字
     public static SERVERNAME: string = 'children';          //服务器连接名
     public static FIRSTGAME: string = 'firstgame';          //第一次进游戏标示
@@ -21,7 +21,7 @@ class GameConfig {
     public static IsLoadSound: boolean = true;             //是否加载声音
     public static SoundName: string[] =                     //声音文件名
     [
-        's19bgm.mp3','sbgm.mp3','s1.mp3','s2_1.mp3','s2.mp3','s3.mp3','s5.mp3','s10.mp3','s12.mp3','s13.mp3','s15.mp3','s19.mp3','s20.mp3','s21.mp3','s22.mp3','s24.mp3','s26.mp3'
+        's27bgm.mp3', 's19bgm.mp3', 'sbgm.mp3', 's1.mp3', 's2_1.mp3', 's2.mp3', 's3.mp3', 's5.mp3', 's10.mp3', 's12.mp3', 's13.mp3', 's15.mp3', 's19.mp3', 's20.mp3', 's21.mp3', 's24.mp3', 's26.mp3'
         // 'die.mp3', 'fail.mp3', 'goal.mp3', 'beatt.mp3', 'click.mp3'
     ];
     public static MoreGameName: string[] =                  //更多游戏名称

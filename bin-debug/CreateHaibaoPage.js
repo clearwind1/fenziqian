@@ -77,3 +77,4 @@ var CreateHaibaoPage = (function (_super) {
     return CreateHaibaoPage;
 }(GameUtil.BassPanel));
 __reflect(CreateHaibaoPage.prototype, "CreateHaibaoPage");
+//# sourceMappingURL=CreateHaibaoPage.js.map

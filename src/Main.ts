@@ -40,7 +40,7 @@ class Main extends egret.DisplayObjectContainer {
         this.stage.setContentSize(GameConfig.DesignWidth, GameConfig.DesignHeight);
         GameUtil.GameScene.init(this.stage);
         //加载资源
-        GameUtil.GameScene.runscene(new GameUtil.LoadingPanel(this.createGameScene, this, 0, 0));
+        GameUtil.GameScene.runscene(new GameUtil.LoadingPanel(this.createGameScene, this, 0, -150));
     }
     /**
      * 创建游戏场景

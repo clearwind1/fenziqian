@@ -22,13 +22,13 @@ class BGMPlayer {
         GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
     }
     /**播放背景音乐 */
-    public play(bgmName: number) {
+    public play(bgmName: number, loop: number = -1) {
         if (this.curbgmtag != -1 && GameData._i().gamesound[this.curbgmtag]) {
             GameData._i().gamesound[this.curbgmtag].stop();
         }
         this.curbgmtag = bgmName;
         if (GameData._i().gamesound[this.curbgmtag]) {
-            GameData._i().gamesound[this.curbgmtag].play(0, -1);
+            GameData._i().gamesound[this.curbgmtag].play(0, loop);
             GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
         }
     }

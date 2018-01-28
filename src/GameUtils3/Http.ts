@@ -12,7 +12,8 @@ module GameUtil
         private onLoader: Function;
         private thisObj: any;
 
-        private coverBg: egret.Shape;
+        private covercontain: egret.DisplayObjectContainer;        
+        //private coverBg: egret.Shape;
 
         public constructor(reqMethod:string=egret.URLRequestMethod.POST,dataFormat:string=egret.URLLoaderDataFormat.TEXT)
         {
@@ -35,7 +36,7 @@ module GameUtil
 
             this.urlLoader.removeEventListener(egret.Event.COMPLETE,this.loaded,this);
 
-            this.thisObj.removeChild(this.coverBg);
+            this.thisObj.removeChild(this.covercontain);
             //console.log('urldata====', this.urlLoader.data);
             var data:any = JSON.parse(this.urlLoader.data);
             if(this.onLoader != null)
@@ -60,9 +61,17 @@ module GameUtil
 
             this.urlLoader.load( this.urlRequest );
 
-            this.coverBg = GameUtil.createRect(0,0,GameConfig.getSW(),GameConfig.getSH(),0);
-            this.thisObj.addChild(this.coverBg);
-            this.coverBg.touchEnabled = true;
+            this.covercontain = new egret.DisplayObjectContainer();
+            this.thisObj.addChild(this.covercontain);
+            var coverBg = GameUtil.createRect(0,0,GameConfig.getSW(),GameConfig.getSH(),0.6);
+            this.covercontain.addChild(coverBg);
+            this.covercontain.touchEnabled = true;
+            var gif = new Animation('gifloadingbar', 2, 100, 375, 675);
+            gif.setLoop(-1);
+            this.covercontain.addChild(gif);
+            gif.play();
+            var logo = new MyBitmap(RES.getRes('logo_png'), 375, 675 + 100);
+                this.covercontain.addChild(logo);
 
             //console.log("GameUtil.WaitServerPanel.getInstace()=========",GameUtil.WaitServerPanel.getInstace());
             //this.thisObj.addChild(GameUtil.WaitServerPanel.getInstace());

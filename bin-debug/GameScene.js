@@ -57,7 +57,7 @@ var GameScene = (function (_super) {
         this.addChild(this.SecondContain);
         this.showLookphone();
         //测试
-        //this.showWind();
+        // this.showscft();
     };
     //画面2
     GameScene.prototype.showLookphone = function () {
@@ -84,14 +84,16 @@ var GameScene = (function (_super) {
     };
     //画面3
     GameScene.prototype.showamazing = function () {
+        BGMPlayer._i().play(SoundName.s27bgm, 1);
         this.FirstContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s2].stop();
         GameData._i().gamesound[SoundName.s3].play();
         var img = new MyBitmap(RES.getRes('pic0_1_png'), this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(img);
         var sx = new MyBitmap(RES.getRes('pic0_0_png'), this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(sx);
         egret.Tween.get(sx, { loop: true }).to({ x: this.mStageW / 2 + 4, y: this.mStageH / 2 - 4 }).wait(2).to({ x: this.mStageW / 2 - 4, y: this.mStageH / 2 + 4 }).wait(2);
-        egret.setTimeout(this.showresb, this, 1000);
+        egret.setTimeout(this.showresb, this, 1200);
         this.showlyric(0, this.SecondContain);
     };
     //画面4
@@ -104,6 +106,7 @@ var GameScene = (function (_super) {
     };
     GameScene.prototype.showresbtap = function (id) {
         var _this = this;
+        GameData._i().gamesound[SoundName.s2_1].stop();
         GameData._i().gamesound[SoundName.s2_1].play();
         var img = new MyBitmap(RES.getRes('resbtpic' + id + '_png'), 169, 553);
         img.setanchorOff(0, 0.5);
@@ -121,6 +124,7 @@ var GameScene = (function (_super) {
     //画面5
     GameScene.prototype.showflfq = function () {
         var _this = this;
+        GameData._i().gamesound[SoundName.s2_1].stop();
         this.FirstContain.removeChildren();
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0.4;
@@ -153,6 +157,7 @@ var GameScene = (function (_super) {
     //画面6
     GameScene.prototype.showgzlight = function () {
         var _this = this;
+        GameData._i().gamesound[SoundName.s5].stop();
         this.FirstContain.alpha = 0;
         var bg = new MyBitmap(RES.getRes('pic6_0_png'), 0, 0);
         bg.setanchorOff(0, 0);
@@ -166,8 +171,8 @@ var GameScene = (function (_super) {
         this.showlyric(4, this.FirstContain);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(function () {
-            egret.Tween.get(hand).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(100).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(400).call(function () {
-                egret.Tween.get(_this.FirstContain).to({ x: -1350 }, 2000).wait(500).call(function () {
+            egret.Tween.get(hand).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(100).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(600).call(function () {
+                egret.Tween.get(_this.FirstContain).to({ x: -1350 }, 2000).wait(1200).call(function () {
                     _this.showWind();
                 }, _this);
             }, _this);
@@ -190,7 +195,7 @@ var GameScene = (function (_super) {
         egret.Tween.get(wind).to({ alpha: 1 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800).call(function () {
-            egret.setTimeout(_this.showflymoney, _this, 1200);
+            egret.setTimeout(_this.showflymoney, _this, 1800);
         }, this);
     };
     //画面8
@@ -267,11 +272,12 @@ var GameScene = (function (_super) {
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800);
         this.showlyric(8, this.FirstContain);
-        egret.setTimeout(this.showsce, this, 1500);
+        egret.setTimeout(this.showsce, this, 2300);
     };
     ////画面11
     GameScene.prototype.showsce = function () {
         var _this = this;
+        GameData._i().gamesound[SoundName.s10].stop();
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
         var posx = this.mStageW / 2;
@@ -291,10 +297,10 @@ var GameScene = (function (_super) {
         egret.setTimeout(function () {
             _this.SecondContain.removeChild(light);
             _this.SecondContain.removeChild(snowman);
-            egret.Tween.get(img).to({ scaleX: 5, scaleY: 5 }, 400).call(function () {
+            egret.Tween.get(img).to({ scaleX: 5, scaleY: 5 }, 600).call(function () {
                 _this.showsctw();
             }, _this);
-        }, this, 1500);
+        }, this, 1900);
     };
     ////画面12
     GameScene.prototype.showsctw = function () {
@@ -324,12 +330,13 @@ var GameScene = (function (_super) {
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800);
         this.showlyric(10, this.FirstContain);
-        egret.setTimeout(this.showscth, this, 1500);
+        egret.setTimeout(this.showscth, this, 3500);
     };
     ////画面13
     GameScene.prototype.showscth = function () {
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s12].stop();
         GameData._i().gamesound[SoundName.s13].play();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
@@ -354,13 +361,14 @@ var GameScene = (function (_super) {
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
         this.showlyric(11, this.SecondContain);
-        egret.setTimeout(this.showscft, this, 1500);
+        egret.setTimeout(this.showscft, this, 3500);
     };
     ////画面14
     GameScene.prototype.showscft = function () {
         //this.SecondContain.removeChildren();
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s13].stop();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic14_jpg'), posx, posy);
@@ -381,7 +389,7 @@ var GameScene = (function (_super) {
             var pos = [[574, 1238], [417, 25], [674, 724], [190, 615], [708, 221], [91, 1152], [141, 166], [591, 1114], [400, 140], [330, 1042], [363, 461], [544, 685], [242, 771]];
             var qt = self.FirstContain.getChildByName('qt' + id);
             qt.visible = true;
-            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 500 - id * 30).call(function () {
+            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 400 - id * 20).call(function () {
                 id++;
                 if (id > 12) {
                     egret.setTimeout(self.showscfif, self, 800);
@@ -430,6 +438,7 @@ var GameScene = (function (_super) {
         //this.SecondContain.removeChildren();
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s15].stop();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic16_jpg'), posx, posy);
@@ -475,7 +484,7 @@ var GameScene = (function (_super) {
             var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 973], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [361, 364], [76, 132], [682, 721], [127, 482], [15, 755]];
             var qt = self.SecondContain.getChildByName('qt' + id);
             qt.visible = true;
-            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 500 - id * 30).call(function () {
+            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 300 - id * 30).call(function () {
                 id++;
                 if (id > 24) {
                     egret.setTimeout(self.showscet, self, 500);
@@ -509,6 +518,7 @@ var GameScene = (function (_super) {
             }, _this, 300);
             egret.setTimeout(function () {
                 _this.FirstContain.removeChild(_this.FirstContain.getChildByName('qt'));
+                GameData._i().gamesound[SoundName.s2_1].stop();
                 GameData._i().gamesound[SoundName.s2].play();
                 img.setNewTexture(RES.getRes('pic18_1_jpg'));
             }, _this, 900);
@@ -519,6 +529,7 @@ var GameScene = (function (_super) {
     GameScene.prototype.showscnt = function () {
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s2].stop();
         BGMPlayer._i().play(SoundName.s19bgm);
         GameData._i().gamesound[SoundName.s19].play();
         var posx = this.mStageW / 2;
@@ -533,6 +544,7 @@ var GameScene = (function (_super) {
     GameScene.prototype.showsctt = function () {
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
+        GameData._i().gamesound[SoundName.s19].stop();
         GameData._i().gamesound[SoundName.s20].play();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
@@ -546,20 +558,23 @@ var GameScene = (function (_super) {
     GameScene.prototype.showsctto = function () {
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
-        GameData._i().gamesound[SoundName.s21].play();
+        GameData._i().gamesound[SoundName.s20].stop();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic21_jpg'), posx, posy);
         this.SecondContain.addChild(img);
         egret.setTimeout(this.showscttt, this, 1500);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
+        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).call(function () {
+            GameData._i().gamesound[SoundName.s21].play();
+        }, this);
     };
     ////画面22
     GameScene.prototype.showscttt = function () {
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
-        GameData._i().gamesound[SoundName.s22].play();
+        GameData._i().gamesound[SoundName.s21].stop();
+        //GameData._i().gamesound[SoundName.s22].play();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic22_jpg'), posx, posy);
@@ -603,13 +618,13 @@ var GameScene = (function (_super) {
         var _this = this;
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
-        GameData._i().gamesound[SoundName.s24].play();
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic24_0_jpg'), posx, posy);
         this.FirstContain.addChild(img);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800).call(function () {
+            GameData._i().gamesound[SoundName.s24].play();
             egret.setTimeout(function () {
                 img.setNewTexture(RES.getRes('pic24_1_jpg'));
             }, _this, 1200);
@@ -624,7 +639,7 @@ var GameScene = (function (_super) {
         var posy = [201, 1222, 219, 124, 1132, 1107, 519, 1178, 170, 245, 120, 189, 198, 1046, 171, 655,];
         var lyricpic = new MyBitmap(RES.getRes('cripic' + id + '_png'), posx[id], posy[id]);
         contain.addChild(lyricpic);
-        egret.Tween.get(lyricpic, { loop: true }).to({ alpha: 0 }).wait(300).to({ alpha: 1 }).wait(300);
+        egret.Tween.get(lyricpic, { loop: true }).to({ alpha: 0 }).wait(400).to({ alpha: 1 }).wait(1000);
     };
     /**
      * 游戏定时器
@@ -776,3 +791,4 @@ var GameScene = (function (_super) {
     return GameScene;
 }(GameUtil.BassPanel));
 __reflect(GameScene.prototype, "GameScene");
+//# sourceMappingURL=GameScene.js.map

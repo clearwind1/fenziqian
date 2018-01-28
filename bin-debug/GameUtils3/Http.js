@@ -8,6 +8,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var GameUtil;
 (function (GameUtil) {
     var Http = (function () {
+        //private coverBg: egret.Shape;
         function Http(reqMethod, dataFormat) {
             if (reqMethod === void 0) { reqMethod = egret.URLRequestMethod.POST; }
             if (dataFormat === void 0) { dataFormat = egret.URLLoaderDataFormat.TEXT; }
@@ -25,7 +26,7 @@ var GameUtil;
         Http.prototype.loaded = function (event) {
             //this.thisObj.removeChild(GameUtil.WaitServerPanel.getInstace());
             this.urlLoader.removeEventListener(egret.Event.COMPLETE, this.loaded, this);
-            this.thisObj.removeChild(this.coverBg);
+            this.thisObj.removeChild(this.covercontain);
             //console.log('urldata====', this.urlLoader.data);
             var data = JSON.parse(this.urlLoader.data);
             if (this.onLoader != null) {
@@ -45,9 +46,17 @@ var GameUtil;
             this.urlRequest.data = urlVariables;
             this.urlLoader.addEventListener(egret.Event.COMPLETE, this.loaded, this);
             this.urlLoader.load(this.urlRequest);
-            this.coverBg = GameUtil.createRect(0, 0, GameConfig.getSW(), GameConfig.getSH(), 0);
-            this.thisObj.addChild(this.coverBg);
-            this.coverBg.touchEnabled = true;
+            this.covercontain = new egret.DisplayObjectContainer();
+            this.thisObj.addChild(this.covercontain);
+            var coverBg = GameUtil.createRect(0, 0, GameConfig.getSW(), GameConfig.getSH(), 0.6);
+            this.covercontain.addChild(coverBg);
+            this.covercontain.touchEnabled = true;
+            var gif = new Animation('gifloadingbar', 2, 100, 375, 675);
+            gif.setLoop(-1);
+            this.covercontain.addChild(gif);
+            gif.play();
+            var logo = new MyBitmap(RES.getRes('logo_png'), 375, 675 + 100);
+            this.covercontain.addChild(logo);
             //console.log("GameUtil.WaitServerPanel.getInstace()=========",GameUtil.WaitServerPanel.getInstace());
             //this.thisObj.addChild(GameUtil.WaitServerPanel.getInstace());
         };
@@ -67,3 +76,4 @@ var GameUtil;
     GameUtil.Http = Http;
     __reflect(Http.prototype, "GameUtil.Http");
 })(GameUtil || (GameUtil = {}));
+//# sourceMappingURL=Http.js.map

@@ -60,10 +60,12 @@ class StartGameScene extends GameUtil.BassPanel {
 
         var btn: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_png', 'msgtip_png', this.startgame);
         btn.x = this.mStageW / 2;
-        btn.y = 654;
+        btn.y = 654-150;
         this.addChild(btn);
         btn.scaleX = btn.scaleY = 0.4;
-        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400);
+        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400).call(() => {
+            egret.Tween.get(btn, { loop: true }).to({ scaleX: 0.98,scaleY:0.98 }, 800).to({ scaleX: 1,scaleY:1 }, 800);
+        },this);
         GameData._i().gamesound[SoundName.s1].play();
 
         var tip: MyBitmap = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
@@ -76,6 +78,7 @@ class StartGameScene extends GameUtil.BassPanel {
     /**开始游戏 */
     private startgame() {
         GameUtil.trace('startgame');
+        GameData._i().gamesound[SoundName.s2].play(0, 1);
         GameUtil.GameScene.runscene(new GameScene());
     }
     /**游戏排行榜 */
