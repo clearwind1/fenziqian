@@ -5,6 +5,7 @@ class QuestionPage extends GameUtil.BassPanel {
 	}
 	public init() {
 		this.showbg();
+		this.stage.addChild(new SoundControl());
 	}
 
 	private showbg() {

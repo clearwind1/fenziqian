@@ -49,6 +49,7 @@ class Main extends egret.DisplayObjectContainer {
     private createGameScene(): void {
         GameUtil.Http.getinstance();
         GameUtil.GameScene.runscene(new StartGameScene());
+        this.stage.addChild(new SoundControl());
     }
 
 }

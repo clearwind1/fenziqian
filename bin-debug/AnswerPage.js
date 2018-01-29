@@ -20,6 +20,7 @@ var AnswerPage = (function (_super) {
     }
     AnswerPage.prototype.init = function () {
         this.show();
+        this.stage.addChild(new SoundControl());
     };
     AnswerPage.prototype.show = function () {
         var askerbg = new MyBitmap(RES.getRes('askerbg_jpg'), 0, 0);

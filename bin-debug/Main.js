@@ -61,6 +61,7 @@ var Main = (function (_super) {
     Main.prototype.createGameScene = function () {
         GameUtil.Http.getinstance();
         GameUtil.GameScene.runscene(new StartGameScene());
+        this.stage.addChild(new SoundControl());
     };
     return Main;
 }(egret.DisplayObjectContainer));

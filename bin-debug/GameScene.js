@@ -30,6 +30,7 @@ var GameScene = (function (_super) {
         this.addtouch();
         this.bindkeyboard();
         this.gameinterval();
+        this.stage.addChild(new SoundControl());
     };
     /**
      * 初始化数据
@@ -57,7 +58,7 @@ var GameScene = (function (_super) {
         this.addChild(this.SecondContain);
         this.showLookphone();
         //测试
-        // this.showscft();
+        //this.showflfq();
     };
     //画面2
     GameScene.prototype.showLookphone = function () {
@@ -99,9 +100,8 @@ var GameScene = (function (_super) {
     //画面4
     GameScene.prototype.showresb = function () {
         var _this = this;
-        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(function () { _this.showresbtap(0); }, this);
+        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(function () { _this.showlyric(1, _this.FirstContain); _this.showresbtap(0); }, this);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 700);
-        this.showlyric(1, this.FirstContain);
         //this.showresbtap(0);
     };
     GameScene.prototype.showresbtap = function (id) {
@@ -128,15 +128,11 @@ var GameScene = (function (_super) {
         this.FirstContain.removeChildren();
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0.4;
-        var zt = new MyBitmap(RES.getRes('pic5_1_png'), this.mStageW / 2, this.mStageH / 2);
-        this.SecondContain.addChild(zt);
-        var ys = new MyBitmap(RES.getRes('pic5_2_png'), this.mStageW / 2, this.mStageH / 2);
-        this.SecondContain.addChild(ys);
         var rw = new MyBitmap(RES.getRes('pic5_0_png'), this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(rw);
-        var qt = new MyBitmap(RES.getRes('pic5_qt_png'), 254, 1114);
+        var qt = new MyBitmap(RES.getRes('pic5_qt_png'), 184, 1164);
         this.SecondContain.addChild(qt);
-        egret.Tween.get(qt, { loop: true }).to({ x: 260, y: 1100 }, 500).to({ x: 240, y: 1110 }, 500).to({ x: 243, y: 1120 }, 500).to({ x: 254, y: 1114 }, 500);
+        egret.Tween.get(qt, { loop: true }).to({ x: 190, y: 1150 }, 500).to({ x: 170, y: 1160 }, 500).to({ x: 173, y: 1170 }, 500).to({ x: 184, y: 1164 }, 500);
         var qt2 = new MyBitmap(RES.getRes('pic5_qt_png'), 622, 471);
         qt2.$setRotation(-20);
         this.SecondContain.addChild(qt2);
@@ -146,12 +142,11 @@ var GameScene = (function (_super) {
         tq.scaleX = tq.scaleY = 0.5;
         GameData._i().gamesound[SoundName.s5].play();
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 500).call(function () {
+            _this.showlyric(2, _this.SecondContain);
             egret.Tween.get(tq).to({ alpha: 0, scaleX: 1.5, scaleY: 1.5, x: 53, y: 798, rotation: 27 }, 500).call(function () {
-                egret.Tween.get(ys, { loop: true }).to({ scaleX: -1, rotation: -40 }).wait(1000).to({ scaleX: 1, rotation: 0 }).wait(1000);
-                egret.Tween.get(rw, { loop: true }).to({ scaleX: -1, rotation: -40 }).wait(1000).to({ scaleX: 1, rotation: 0 }).wait(1000);
+                egret.Tween.get(rw, { loop: true }).to({ texture: RES.getRes('pic5_1_png') }).wait(1000).to({ texture: RES.getRes('pic5_0_png') }).wait(1000);
             }, _this);
         }, this);
-        this.showlyric(2, this.SecondContain);
         egret.setTimeout(this.showgzlight, this, 3000);
     };
     //画面6
@@ -167,12 +162,13 @@ var GameScene = (function (_super) {
         var light = new MyBitmap(RES.getRes('pic6_2_png'), 1827, 785);
         this.FirstContain.addChild(light);
         egret.Tween.get(light, { loop: true }).to({ alpha: 0 }).wait(300).to({ alpha: 1 }).wait(300);
-        this.showlyric(3, this.FirstContain);
-        this.showlyric(4, this.FirstContain);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(function () {
+            _this.showlyric(3, _this.FirstContain);
             egret.Tween.get(hand).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(100).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(600).call(function () {
-                egret.Tween.get(_this.FirstContain).to({ x: -1350 }, 2000).wait(1200).call(function () {
+                egret.Tween.get(_this.FirstContain).to({ x: -1350 }, 2000).call(function () {
+                    _this.showlyric(4, _this.FirstContain);
+                }, _this).wait(1200).call(function () {
                     _this.showWind();
                 }, _this);
             }, _this);
@@ -186,7 +182,6 @@ var GameScene = (function (_super) {
         //this.SecondContain.scaleX = this.SecondContain.scaleY = 0.3;
         var bg = new MyBitmap(RES.getRes('pic7_0_jpg'), this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(bg);
-        this.showlyric(5, this.SecondContain);
         var wind = new Animation('pic7_', 4, 100, this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(wind);
         wind.alpha = 0;
@@ -195,6 +190,7 @@ var GameScene = (function (_super) {
         egret.Tween.get(wind).to({ alpha: 1 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800).call(function () {
+            _this.showlyric(5, _this.SecondContain);
             egret.setTimeout(_this.showflymoney, _this, 1800);
         }, this);
     };
@@ -214,16 +210,7 @@ var GameScene = (function (_super) {
         wind.setLoop(1);
         wind.setRemove(false);
         wind.setendcall(this.showscn, this);
-        // var wind = new MyBitmap(RES.getRes('pic8_0_png'), posx, posy);
-        // this.FirstContain.addChild(wind);
-        // egret.Tween.get(wind, { loop: true }).to({ scaleX: 1.1 }, 300).to({ scaleX: 1 }, 300);
-        // var money = new MyBitmap(RES.getRes('pic8_1_png'), posx, posy);
-        // this.FirstContain.addChild(money);
-        // egret.Tween.get(money, { loop: true }).to({ y: posy - 4 }, 300).to({ y: posy }, 300);
         this.showlyric(6, this.FirstContain);
-        // egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
-        // egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800);
-        //egret.setTimeout(this.showscn, this, 1500);
     };
     //画面9
     GameScene.prototype.showscn = function () {
@@ -246,6 +233,7 @@ var GameScene = (function (_super) {
     };
     ////画面10
     GameScene.prototype.showsct = function () {
+        var _this = this;
         this.FirstContain.alpha = 0;
         GameData._i().gamesound[SoundName.s10].play();
         var posx = this.mStageW / 2;
@@ -270,8 +258,9 @@ var GameScene = (function (_super) {
         this.FirstContain.addChild(redpack);
         egret.Tween.get(redpack, { loop: true }).to({ y: 404 }, 300).to({ y: 414 }, 300);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800);
-        this.showlyric(8, this.FirstContain);
+        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800).call(function () {
+            _this.showlyric(8, _this.FirstContain);
+        }, this);
         egret.setTimeout(this.showsce, this, 2300);
     };
     ////画面11
@@ -292,8 +281,9 @@ var GameScene = (function (_super) {
         var snowman = new MyBitmap(RES.getRes('pic11_1_png'), posx, 1081);
         this.SecondContain.addChild(snowman);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
-        this.showlyric(9, this.SecondContain);
+        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).call(function () {
+            _this.showlyric(9, _this.SecondContain);
+        }, this);
         egret.setTimeout(function () {
             _this.SecondContain.removeChild(light);
             _this.SecondContain.removeChild(snowman);
@@ -304,6 +294,7 @@ var GameScene = (function (_super) {
     };
     ////画面12
     GameScene.prototype.showsctw = function () {
+        var _this = this;
         //this.SecondContain.removeChildren();
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
@@ -328,12 +319,14 @@ var GameScene = (function (_super) {
         egret.Tween.get(light, { loop: true }).to({ scaleX: 1, scaleY: 1.1 }, 300).to({ scaleX: 1, scaleY: 1 }, 300);
         //console.log('loging====');
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800);
-        this.showlyric(10, this.FirstContain);
-        egret.setTimeout(this.showscth, this, 3500);
+        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 800).call(function () {
+            _this.showlyric(10, _this.FirstContain);
+        }, this);
+        egret.setTimeout(this.showscth, this, 4500);
     };
     ////画面13
     GameScene.prototype.showscth = function () {
+        var _this = this;
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
         GameData._i().gamesound[SoundName.s12].stop();
@@ -359,12 +352,15 @@ var GameScene = (function (_super) {
         this.SecondContain.addChild(ball);
         egret.Tween.get(ball, { loop: true }).to({ y: this.mStageH / 2 + 10 }, 600).to({ y: this.mStageH / 2 }, 600);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
-        this.showlyric(11, this.SecondContain);
+        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).call(function () {
+            _this.showlyric(11, _this.SecondContain);
+        }, this);
+        ;
         egret.setTimeout(this.showscft, this, 3500);
     };
     ////画面14
     GameScene.prototype.showscft = function () {
+        var _this = this;
         //this.SecondContain.removeChildren();
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
@@ -382,6 +378,7 @@ var GameScene = (function (_super) {
         }
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(function () {
+            _this.showlyric(12, _this.FirstContain);
             downqt(0);
         }, this);
         var self = this;
@@ -389,20 +386,20 @@ var GameScene = (function (_super) {
             var pos = [[574, 1238], [417, 25], [674, 724], [190, 615], [708, 221], [91, 1152], [141, 166], [591, 1114], [400, 140], [330, 1042], [363, 461], [544, 685], [242, 771]];
             var qt = self.FirstContain.getChildByName('qt' + id);
             qt.visible = true;
-            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 400 - id * 20).call(function () {
+            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 200 - id * 20).call(function () {
                 id++;
                 if (id > 12) {
-                    egret.setTimeout(self.showscfif, self, 800);
+                    egret.setTimeout(self.showscfif, self, 1500);
                 }
                 else {
                     downqt(id);
                 }
             }, self);
         }
-        this.showlyric(12, this.FirstContain);
     };
     ////画面15
     GameScene.prototype.showscfif = function () {
+        var _this = this;
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
         GameData._i().gamesound[SoundName.s15].play();
@@ -429,12 +426,14 @@ var GameScene = (function (_super) {
         this.SecondContain.addChild(lhand);
         egret.Tween.get(lhand, { loop: true }).to({ y: 767 }, 300).to({ y: 753 }, 300);
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
-        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800);
-        this.showlyric(13, this.SecondContain);
-        egret.setTimeout(this.showscsit, this, 1500);
+        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).call(function () {
+            egret.setTimeout(_this.showscsit, _this, 1500);
+            _this.showlyric(13, _this.SecondContain);
+        }, this);
     };
     ////画面16
     GameScene.prototype.showscsit = function () {
+        var _this = this;
         //this.SecondContain.removeChildren();
         this.FirstContain.removeChildren();
         this.FirstContain.alpha = 0;
@@ -463,8 +462,9 @@ var GameScene = (function (_super) {
         this.FirstContain.addChild(rhand);
         egret.Tween.get(rhand, { loop: true }).to({ rotation: -4 }, 300).to({ rotation: 4 }, 300).to({ rotation: 0 }, 300);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
-        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500);
-        this.showlyric(14, this.FirstContain);
+        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(function () {
+            _this.showlyric(14, _this.FirstContain);
+        }, this);
         egret.setTimeout(this.showscset, this, 1500);
     };
     ////画面17
@@ -484,10 +484,10 @@ var GameScene = (function (_super) {
             var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 973], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [361, 364], [76, 132], [682, 721], [127, 482], [15, 755]];
             var qt = self.SecondContain.getChildByName('qt' + id);
             qt.visible = true;
-            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 300 - id * 30).call(function () {
+            egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 200 - id * 30).call(function () {
                 id++;
                 if (id > 24) {
-                    egret.setTimeout(self.showscet, self, 500);
+                    egret.setTimeout(self.showscet, self, 2000);
                 }
                 else {
                     downqt(id);
@@ -523,7 +523,11 @@ var GameScene = (function (_super) {
                 img.setNewTexture(RES.getRes('pic18_1_jpg'));
             }, _this, 900);
         }, this);
-        egret.setTimeout(this.showscnt, this, 2000);
+        egret.setTimeout(function () {
+            egret.Tween.get(_this.FirstContain).to({ alpha: 0 }, 500).wait(300).call(function () {
+                _this.showscnt();
+            }, _this);
+        }, this, 2000);
     };
     ////画面19
     GameScene.prototype.showscnt = function () {
@@ -639,7 +643,9 @@ var GameScene = (function (_super) {
         var posy = [201, 1222, 219, 124, 1132, 1107, 519, 1178, 170, 245, 120, 189, 198, 1046, 171, 655,];
         var lyricpic = new MyBitmap(RES.getRes('cripic' + id + '_png'), posx[id], posy[id]);
         contain.addChild(lyricpic);
-        egret.Tween.get(lyricpic, { loop: true }).to({ alpha: 0 }).wait(400).to({ alpha: 1 }).wait(1000);
+        lyricpic.alpha = 0;
+        //egret.Tween.get(lyricpic, { loop: true }).to({ alpha: 0 }).wait(400).to({ alpha: 1 }).wait(1000);
+        egret.Tween.get(lyricpic).to({ alpha: 1 }, 700);
     };
     /**
      * 游戏定时器

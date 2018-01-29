@@ -18,6 +18,7 @@ var QuestionPage = (function (_super) {
     }
     QuestionPage.prototype.init = function () {
         this.showbg();
+        this.stage.addChild(new SoundControl());
     };
     QuestionPage.prototype.showbg = function () {
         var bg = new MyBitmap(RES.getRes('quespic_jpg'), 0, 0);

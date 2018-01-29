@@ -9,6 +9,7 @@ class AnswerPage extends GameUtil.BassPanel {
 	}
 	public init() {
 		this.show();
+		this.stage.addChild(new SoundControl());
 	}
 
 	public show() {

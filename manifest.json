@@ -9,9 +9,9 @@
 	],
 	"game": [
 		"bin-debug/GameUtils3/BassPanel.js",
-		"bin-debug/Othercontainer.js",
 		"bin-debug/GameUtils3/MyBitmap.js",
 		"bin-debug/GameUtils3/MyTextField.js",
+		"bin-debug/Othercontainer.js",
 		"bin-debug/GameUtils3/Http.js",
 		"bin-debug/GameMenus.js",
 		"bin-debug/GameOverPageShow.js",
@@ -25,6 +25,7 @@
 		"bin-debug/AnswerPage.js",
 		"bin-debug/QuestionPage.js",
 		"bin-debug/SharePageShow.js",
+		"bin-debug/SoundControl.js",
 		"bin-debug/StartGameScene.js",
 		"bin-debug/GameUtils3/AdaptGamelayer.js",
 		"bin-debug/GameUtils3/Animation.js",

@@ -29,7 +29,11 @@ class BGMPlayer {
         this.curbgmtag = bgmName;
         if (GameData._i().gamesound[this.curbgmtag]) {
             GameData._i().gamesound[this.curbgmtag].play(0, loop);
-            GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
+            if (!GameConfig._i().bgamemusic) {
+                GameData._i().gamesound[this.curbgmtag].setvolume(0);
+            } else {
+                GameData._i().gamesound[this.curbgmtag].setvolume(this.volume);
+            }
         }
     }
 
