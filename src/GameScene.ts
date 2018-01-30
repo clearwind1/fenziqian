@@ -17,7 +17,6 @@ class GameScene extends GameUtil.BassPanel {
         super();
     }
     public init() {
-        //BGMPlayer._i().play(SoundName.sbgm);     //背景音乐
         this.intervalarr = [];
         this.initdata();
         this.showbg();
@@ -48,6 +47,14 @@ class GameScene extends GameUtil.BassPanel {
         //egret.setTimeout(this.touchtap, this, this.DelayTime);
 
         //this.addChild(GameScore._i());
+        this.stage.addEventListener(egret.Event.DEACTIVATE, () => {
+            BGMPlayer._i().pause();
+        }, this);
+        this.stage.addEventListener(egret.Event.ACTIVATE, () => {
+            BGMPlayer._i().resume();
+        },this)
+        
+        BGMPlayer._i().play(SoundName.s27bgm,1,32);     //背景音乐
 
         var bg: MyBitmap = new MyBitmap(RES.getRes('pic0_jpg'), 0, 0);
         bg.setanchorOff(0, 0);
@@ -61,7 +68,7 @@ class GameScene extends GameUtil.BassPanel {
 
         this.showLookphone();
         //测试
-        //this.showflfq();
+        //this.showscset();
     }
     //画面2
     private showLookphone() {
@@ -83,7 +90,7 @@ class GameScene extends GameUtil.BassPanel {
     }
     //画面3
     private showamazing() {
-        BGMPlayer._i().play(SoundName.s27bgm, 1);
+        //BGMPlayer._i().play(SoundName.s27bgm, 1);
         this.FirstContain.alpha = 0;
         GameData._i().gamesound[SoundName.s2].stop();
         GameData._i().gamesound[SoundName.s3].play();
@@ -97,10 +104,19 @@ class GameScene extends GameUtil.BassPanel {
     }
     //画面4
     private showresb() {
-        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(() => { this.showlyric(1, this.FirstContain); this.showresbtap(0); }, this, );
-        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 700);
+        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(() => {
+            this.showlyric(1, this.FirstContain);
+            egret.setTimeout(() => {
+                egret.Tween.get((<MyBitmap>this.FirstContain.getChildByName('lyricpic'))).to({ alpha: 0 }, 700);
 
-        //this.showresbtap(0);
+                var lyricpic = new MyBitmap(RES.getRes('cripic1_1_png'), 389, 1141);
+                this.FirstContain.addChild(lyricpic);
+                lyricpic.alpha = 0;
+                egret.Tween.get(lyricpic).to({ alpha: 1 }, 700);
+            }, this, 1000);
+            this.showresbtap(0);
+        }, this, );
+        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 700);
     }
     private showresbtap(id) {
         GameData._i().gamesound[SoundName.s2_1].stop();
@@ -118,7 +134,7 @@ class GameScene extends GameUtil.BassPanel {
         this.FirstContain.removeChildren();
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0.4;
-        
+
         var rw: MyBitmap = new MyBitmap(RES.getRes('pic5_0_png'), this.mStageW / 2, this.mStageH / 2);
         this.SecondContain.addChild(rw);
 
@@ -135,9 +151,16 @@ class GameScene extends GameUtil.BassPanel {
         GameData._i().gamesound[SoundName.s5].play();
 
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 500).call(() => {
-            this.showlyric(2, this.SecondContain);
+            var lyricpic = new MyBitmap(RES.getRes('cripic2_0_png'), 382, 185);
+            this.FirstContain.addChild(lyricpic);
+            lyricpic.alpha = 0;
+            egret.Tween.get(lyricpic).to({ alpha: 1 }, 700).wait(800).call(() => {
+                egret.Tween.get(lyricpic).to({ alpha: 0 }, 700);
+                this.showlyric(2, this.SecondContain);
+            },this);
+
             egret.Tween.get(tq).to({ alpha: 0, scaleX: 1.5, scaleY: 1.5, x: 53, y: 798, rotation: 27 }, 500).call(() => {
-                egret.Tween.get(rw, { loop: true }).to({ texture: RES.getRes('pic5_1_png')}).wait(1000).to({ texture: RES.getRes('pic5_0_png') }).wait(1000);
+                egret.Tween.get(rw, { loop: true }).to({ texture: RES.getRes('pic5_1_png') }).wait(1000).to({ texture: RES.getRes('pic5_0_png') }).wait(1000);
             }, this);
         }, this);
 
@@ -403,7 +426,7 @@ class GameScene extends GameUtil.BassPanel {
 
         var self = this;
         function downqt(id) {
-            var pos = [[574, 1238], [417, 25], [674, 724], [190, 615], [708, 221], [91, 1152], [141, 166], [591, 1114], [400, 140], [330, 1042], [363, 461], [544, 685], [242, 771]];
+            var pos = [[574, 1238], [417, 25], [674, 724], [91, 584], [708, 221], [91, 1152], [141, 166], [591, 1114], [400, 140], [330, 1042], [363, 461], [544, 685], [242, 771]];
             let qt = self.FirstContain.getChildByName('qt' + id);
             qt.visible = true;
 
@@ -499,7 +522,7 @@ class GameScene extends GameUtil.BassPanel {
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 1;
 
-        for (let i: number = 0; i < 25; i++) {
+        for (let i: number = 0; i < 26; i++) {
             let qt = new MyBitmap(RES.getRes('pic17_' + i + '_png'), 375, 670);
             qt.name = 'qt' + i;
             this.SecondContain.addChild(qt);
@@ -510,13 +533,13 @@ class GameScene extends GameUtil.BassPanel {
 
         var self = this;
         function downqt(id) {
-            var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 973], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [361, 364], [76, 132], [682, 721], [127, 482], [15, 755]];
+            var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 873], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [261, 364], [76, 132], [102, 621],[682,722]];
             let qt = self.SecondContain.getChildByName('qt' + id);
             qt.visible = true;
 
             egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 200 - id * 30).call(() => {
                 id++;
-                if (id > 24) {
+                if (id > 25) {
                     egret.setTimeout(self.showscet, self, 2000);
                 } else {
                     downqt(id);
@@ -557,9 +580,9 @@ class GameScene extends GameUtil.BassPanel {
         }, this);
 
         egret.setTimeout(() => {
-            egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 500).wait(300).call(()=>{
+            egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 500).wait(300).call(() => {
                 this.showscnt();
-            },this);
+            }, this);
         }, this, 2000);
     }
     ////画面19
@@ -643,6 +666,11 @@ class GameScene extends GameUtil.BassPanel {
         var img = new MyBitmap(RES.getRes('pic23_0_jpg'), posx, posy);
         this.SecondContain.addChild(img);
 
+        var wind = new Animation('pic23_', 6, 200, this.mStageW / 2, this.mStageH / 2);
+        this.SecondContain.addChild(wind);
+        wind.setLoop(-1);
+        wind.play();
+
         var self = this;
         function changeimg(id) {
             img.setNewTexture(RES.getRes('pic23_' + id + '_jpg'));
@@ -693,6 +721,7 @@ class GameScene extends GameUtil.BassPanel {
         var posx = [361, 350, 368, 412, 1845, 379, 382, 363, 366, 432, 378, 358, 375, 380, 379, 381,];
         var posy = [201, 1222, 219, 124, 1132, 1107, 519, 1178, 170, 245, 120, 189, 198, 1046, 171, 655,];
         var lyricpic = new MyBitmap(RES.getRes('cripic' + id + '_png'), posx[id], posy[id]);
+        lyricpic.name = 'lyricpic';
         contain.addChild(lyricpic);
         lyricpic.alpha = 0;
         //egret.Tween.get(lyricpic, { loop: true }).to({ alpha: 0 }).wait(400).to({ alpha: 1 }).wait(1000);

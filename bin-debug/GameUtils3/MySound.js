@@ -43,6 +43,11 @@ var MySound = (function () {
             this.soundchannel.volume = vaule;
         }
     };
+    MySound.prototype.getpostion = function () {
+        if (this.soundchannel) {
+            return this.soundchannel.position;
+        }
+    };
     return MySound;
 }());
 __reflect(MySound.prototype, "MySound");

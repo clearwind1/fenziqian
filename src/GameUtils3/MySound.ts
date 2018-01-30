@@ -48,4 +48,10 @@ class MySound {
         }
     }
 
+    public getpostion() {
+        if (this.soundchannel) {
+            return this.soundchannel.position;
+        }
+    }
+
 }

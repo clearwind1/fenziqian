@@ -69,7 +69,7 @@ var CreateHaibaoPage = (function (_super) {
         this.removeChild(this.tipContain);
     };
     CreateHaibaoPage.prototype.jumpgz = function () {
-        window.location.href = "http://tingfeng.tristana.cn/showqrcode/qrcode.html";
+        window.location.href = "http://tingfeng.tristana.cn/fenziqianv04/qrcode.html";
     };
     CreateHaibaoPage.prototype.backgamescene = function () {
         GameUtil.GameScene.runscene(new GameScene());
