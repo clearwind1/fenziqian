@@ -27,7 +27,7 @@ var QuestionPage = (function (_super) {
         var btn = new GameUtil.Menu(this, 'checkbtn_png', 'checkbtn_png', this.anserpage);
         btn.setScaleMode();
         btn.x = this.mStageW / 2;
-        btn.y = 823;
+        btn.y = 914;
         this.addChild(btn);
     };
     QuestionPage.prototype.anserpage = function () {
@@ -36,4 +36,3 @@ var QuestionPage = (function (_super) {
     return QuestionPage;
 }(GameUtil.BassPanel));
 __reflect(QuestionPage.prototype, "QuestionPage");
-//# sourceMappingURL=QuestionPage.js.map

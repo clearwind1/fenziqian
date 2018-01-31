@@ -16,7 +16,7 @@ class QuestionPage extends GameUtil.BassPanel {
 		var btn: GameUtil.Menu = new GameUtil.Menu(this, 'checkbtn_png', 'checkbtn_png', this.anserpage);
 		btn.setScaleMode();
 		btn.x = this.mStageW / 2;
-		btn.y = 823;
+		btn.y = 914;
 		this.addChild(btn);
 	}
 	

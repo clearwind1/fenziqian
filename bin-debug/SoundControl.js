@@ -52,4 +52,3 @@ var SoundControl = (function (_super) {
     return SoundControl;
 }(GameUtil.BassPanel));
 __reflect(SoundControl.prototype, "SoundControl");
-//# sourceMappingURL=SoundControl.js.map

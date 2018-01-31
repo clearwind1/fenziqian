@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "showmsg0_png,showmsg1_png,showmsg2_png,cripic1_png,cripic2_png,cripic3_png,cripic4_png,cripic5_png,msgtip_png,phonetip_jpg,tiptxt_png,lookphone_png,pic0_jpg,resbtpic0_png,resbtpic1_png,resbtpic2_png,pic5_0_png,pic5_qt_png,pic5_tq_png,pic5_1_png,pic0_0_png,pic0_1_png,pic6_0_png,pic6_1_png,pic6_2_png,cripic0_png,pic7_0_jpg,pic7_1_png,pic8_0_png,pic8_1_png,cripic6_png,pic9_0_png,pic9_1_png,cripic7_png,pic10_1_png,pic10_3_png,pic10_2_png,pic10_4_png,pic10_5_png,cripic8_png,cripic9_png,pic11_1_png,pic11_2_png,pic12_0_png,pic12_1_png,pic12_2_png,pic12_3_png,cripic10_png,pic7_2_png,pic7_3_png,pic7_4_png,pic8_2_png,pic8_3_png,pic8_4_png,pic8_5_png,pic10_jpg,pic11_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic7_jpg,pic8_jpg,pic9_jpg,gifloadingbar22_png,soundbtnoff_png,soundbtnon_png,cripic1_1_png,cripic2_0_png,pic17_25_png",
+			"keys": "showmsg0_png,showmsg1_png,showmsg2_png,cripic1_png,cripic2_png,cripic3_png,cripic4_png,cripic5_png,msgtip_png,phonetip_jpg,tiptxt_png,lookphone_png,pic0_jpg,resbtpic0_png,resbtpic1_png,resbtpic2_png,pic5_0_png,pic5_qt_png,pic5_tq_png,pic5_1_png,pic0_0_png,pic0_1_png,pic6_0_png,pic6_1_png,pic6_2_png,cripic0_png,pic7_0_jpg,pic7_1_png,pic8_0_png,pic8_1_png,cripic6_png,pic9_0_png,pic9_1_png,cripic7_png,pic10_1_png,pic10_3_png,pic10_2_png,pic10_4_png,pic10_5_png,cripic8_png,cripic9_png,pic11_1_png,pic11_2_png,pic12_0_png,pic12_1_png,pic12_2_png,pic12_3_png,cripic10_png,pic7_2_png,pic7_3_png,pic7_4_png,pic8_2_png,pic8_3_png,pic8_4_png,pic8_5_png,pic10_jpg,pic11_jpg,pic14_jpg,pic15_jpg,pic16_jpg,pic7_jpg,pic8_jpg,pic9_jpg,gifloadingbar22_png,soundbtnoff_png,soundbtnon_png,cripic1_1_png,cripic2_0_png,pic17_25_png,msgtip_0_png,msgtip_1_png,msgtip_2_png,lookphone_1_png,lookphone_2_png,lookphone_jpg,lookphone_3_png,lookphone_4_png",
 			"name": "preload"
 		},
 		{
@@ -9,7 +9,7 @@
 			"name": "preloading"
 		},
 		{
-			"keys": "quespic_jpg,askerbg_jpg,askerbtn_png,askerpic0_png,askerpic1_png,askerpic2_png,askerpic3_png,askerpic4_png,askerselectp_png,backbtn_png,checkbtn_png,closebtn_png,donthavegzbtn_png,haibao0_jpg,haibao1_jpg,haibao2_jpg,haibao3_jpg,haibao4_jpg,havegzbtn_png,tipgz_png",
+			"keys": "quespic_jpg,askerbg_jpg,askerbtn_png,askerpic0_png,askerpic1_png,askerpic2_png,askerpic3_png,askerpic4_png,askerselectp_png,backbtn_png,checkbtn_png,closebtn_png,donthavegzbtn_png,haibao0_jpg,haibao1_jpg,haibao2_jpg,haibao3_jpg,haibao4_jpg,havegzbtn_png,tipgz_png,sharetip_png",
 			"name": "load2"
 		},
 		{
@@ -872,6 +872,51 @@
 			"name": "pic23_6_png",
 			"type": "image",
 			"url": "assets/pic/pic23_6.png"
+		},
+		{
+			"name": "msgtip_0_png",
+			"type": "image",
+			"url": "assets/pic/msgtip_0.png"
+		},
+		{
+			"name": "msgtip_1_png",
+			"type": "image",
+			"url": "assets/pic/msgtip_1.png"
+		},
+		{
+			"name": "msgtip_2_png",
+			"type": "image",
+			"url": "assets/pic/msgtip_2.png"
+		},
+		{
+			"name": "lookphone_1_png",
+			"type": "image",
+			"url": "assets/pic/lookphone_1.png"
+		},
+		{
+			"name": "lookphone_2_png",
+			"type": "image",
+			"url": "assets/pic/lookphone_2.png"
+		},
+		{
+			"name": "lookphone_jpg",
+			"type": "image",
+			"url": "assets/pic/lookphone.jpg"
+		},
+		{
+			"name": "sharetip_png",
+			"type": "image",
+			"url": "assets/pic/sharetip.png"
+		},
+		{
+			"name": "lookphone_3_png",
+			"type": "image",
+			"url": "assets/pic/lookphone_3.png"
+		},
+		{
+			"name": "lookphone_4_png",
+			"type": "image",
+			"url": "assets/pic/lookphone_4.png"
 		}
 	]
 }

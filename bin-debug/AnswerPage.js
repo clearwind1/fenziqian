@@ -30,22 +30,22 @@ var AnswerPage = (function (_super) {
             var btnpicstr = 'askerpic' + i + '_png';
             var askerpic = new GameUtil.Menu(this, btnpicstr, btnpicstr, this.selectC, [i]);
             askerpic.x = 375;
-            askerpic.y = 748 + i * 76;
+            askerpic.y = 594 + i * 106;
             this.addChild(askerpic);
         }
-        this.selectP = new MyBitmap(RES.getRes('askerselectp_png'), 160, 748);
+        this.selectP = new MyBitmap(RES.getRes('askerselectp_png'), 143, 594);
         this.addChild(this.selectP);
         var askerbtn = new GameUtil.Menu(this, 'askerbtn_png', 'askerbtn_png', this.upanswer);
         askerbtn.setScaleMode();
         askerbtn.x = 375;
-        askerbtn.y = 1193;
+        askerbtn.y = 1151;
         this.addChild(askerbtn);
     };
     AnswerPage.prototype.selectC = function (id) {
         console.log('selectid====', id);
         GameData._i().gamesound[SoundName.s26].play();
         this.selectID = id;
-        this.selectP.y = 748 + id * 76;
+        this.selectP.y = 594 + id * 106;
     };
     AnswerPage.prototype.upanswer = function () {
         var par = [this.selectID];
@@ -76,4 +76,3 @@ var AnswerPage = (function (_super) {
     return AnswerPage;
 }(GameUtil.BassPanel));
 __reflect(AnswerPage.prototype, "AnswerPage");
-//# sourceMappingURL=AnswerPage.js.map

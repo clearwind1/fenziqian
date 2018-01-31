@@ -59,8 +59,6 @@ module GameUtil {
                 // loadbgpic.setanchorOff(0, 0);
                 // this.addChild(loadbgpic);
 
-                if (GameConfig.IsLoadSound) this.loadsound();
-
                 var loadingbgbar = new MyBitmap(RES.getRes('loadingbarbg_png'), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 loadingbgbar.x = (this.mStageW - loadingbgbar.texture.textureWidth) / 2;
                 loadingbgbar.anchorOffsetX = 0;
@@ -112,6 +110,7 @@ module GameUtil {
             //initiate Resource loading library
             RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
             RES.loadConfig("resource/default.res.json", "resource/");
+            if (GameConfig.IsLoadSound) this.loadsound();
         }
 
         /**

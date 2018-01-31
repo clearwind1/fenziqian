@@ -52,9 +52,9 @@ class GameScene extends GameUtil.BassPanel {
         }, this);
         this.stage.addEventListener(egret.Event.ACTIVATE, () => {
             BGMPlayer._i().resume();
-        },this)
-        
-        BGMPlayer._i().play(SoundName.s27bgm,1,32);     //背景音乐
+        }, this)
+
+        //BGMPlayer._i().play(SoundName.s27bgm, 1);     //背景音乐
 
         var bg: MyBitmap = new MyBitmap(RES.getRes('pic0_jpg'), 0, 0);
         bg.setanchorOff(0, 0);
@@ -68,7 +68,7 @@ class GameScene extends GameUtil.BassPanel {
 
         this.showLookphone();
         //测试
-        //this.showscset();
+        //this.showamazing();
     }
     //画面2
     private showLookphone() {
@@ -80,17 +80,21 @@ class GameScene extends GameUtil.BassPanel {
     }
     //
     private showmsg(id) {
-        var pos = [[430, 297], [109, 359], [109, 430]];
+        var pos = [[430, 330], [109, 386], [109, 457]];
         var img = new MyBitmap(RES.getRes('showmsg' + id + '_png'), pos[id][0], pos[id][1]);
         img.setanchorOff(0, 0.5);
         this.FirstContain.addChild(img);
         GameData._i().gamesound[SoundName.s2].play();
         id++;
-        egret.setTimeout(() => { if (id > 2) { this.showamazing(); } else (this.showmsg(id)); }, this, 1000);
+        egret.setTimeout(() => {
+            if (id > 2) {
+                this.showamazing();
+            } else (this.showmsg(id));
+        }, this, 1000);
     }
     //画面3
     private showamazing() {
-        //BGMPlayer._i().play(SoundName.s27bgm, 1);
+        BGMPlayer._i().play(SoundName.s27bgm, 1);
         this.FirstContain.alpha = 0;
         GameData._i().gamesound[SoundName.s2].stop();
         GameData._i().gamesound[SoundName.s3].play();
@@ -104,7 +108,17 @@ class GameScene extends GameUtil.BassPanel {
     }
     //画面4
     private showresb() {
+        this.FirstContain.removeChildren();
+
+        var lookphone: MyBitmap = new MyBitmap(RES.getRes('lookphone_jpg'), this.mStageW / 2, this.mStageH / 2);
+        this.FirstContain.addChild(lookphone);
+        var hand = new MyBitmap(RES.getRes('lookphone_3_png'), this.mStageW / 2, this.mStageH / 2);
+        this.FirstContain.addChild(hand);
+        var hand2 = new MyBitmap(RES.getRes('lookphone_4_png'), this.mStageW / 2, this.mStageH / 2);
+        this.FirstContain.addChild(hand2);
+        egret.Tween.get(hand, { loop: true }).to({ y: this.mStageH / 2 + 12 }).wait(100).to({ y: this.mStageH / 2 }).wait(100);
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 700).call(() => {
+            
             this.showlyric(1, this.FirstContain);
             egret.setTimeout(() => {
                 egret.Tween.get((<MyBitmap>this.FirstContain.getChildByName('lyricpic'))).to({ alpha: 0 }, 700);
@@ -125,7 +139,11 @@ class GameScene extends GameUtil.BassPanel {
         img.setanchorOff(0, 0.5);
         this.FirstContain.addChild(img);
         id++;
-        egret.setTimeout(() => { if (id > 2) { this.showflfq(); } else { console.log('id===', id); this.FirstContain.removeChild(img); egret.setTimeout(() => { this.showresbtap(id) }, this, 1200) }; }, this, 1000);
+        egret.setTimeout(() => {
+            if (id > 2) {
+                this.showflfq();
+            } else { console.log('id===', id); this.FirstContain.removeChild(img); egret.setTimeout(() => { this.showresbtap(id) }, this, 1200) };
+        }, this, 1000);
     }
     //画面5
     private showflfq() {
@@ -154,17 +172,17 @@ class GameScene extends GameUtil.BassPanel {
             var lyricpic = new MyBitmap(RES.getRes('cripic2_0_png'), 382, 185);
             this.FirstContain.addChild(lyricpic);
             lyricpic.alpha = 0;
-            egret.Tween.get(lyricpic).to({ alpha: 1 }, 700).wait(800).call(() => {
+            egret.Tween.get(lyricpic).to({ alpha: 1 }, 700).wait(1400).call(() => {
                 egret.Tween.get(lyricpic).to({ alpha: 0 }, 700);
                 this.showlyric(2, this.SecondContain);
-            },this);
+            }, this);
 
             egret.Tween.get(tq).to({ alpha: 0, scaleX: 1.5, scaleY: 1.5, x: 53, y: 798, rotation: 27 }, 500).call(() => {
                 egret.Tween.get(rw, { loop: true }).to({ texture: RES.getRes('pic5_1_png') }).wait(1000).to({ texture: RES.getRes('pic5_0_png') }).wait(1000);
             }, this);
         }, this);
 
-        egret.setTimeout(this.showgzlight, this, 3000);
+        egret.setTimeout(this.showgzlight, this, 3600);
     }
     //画面6
     private showgzlight() {
@@ -182,10 +200,10 @@ class GameScene extends GameUtil.BassPanel {
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(() => {
             this.showlyric(3, this.FirstContain);
-            egret.Tween.get(hand).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(100).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(600).call(() => {
+            egret.Tween.get(hand).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(100).to({ rotation: 1 }).wait(100).to({ rotation: 0 }).wait(1600).call(() => {
                 egret.Tween.get(this.FirstContain).to({ x: -1350 }, 2000).call(() => {
                     this.showlyric(4, this.FirstContain);
-                }, this).wait(1200).call(() => {
+                }, this).wait(1500).call(() => {
                     this.showWind();
                 }, this);
             }, this);
@@ -290,11 +308,11 @@ class GameScene extends GameUtil.BassPanel {
             this.showlyric(8, this.FirstContain);
         }, this);
 
-        egret.setTimeout(this.showsce, this, 2300);
+        egret.setTimeout(this.showsce, this, 3300);
     }
     ////画面11
     private showsce() {
-        GameData._i().gamesound[SoundName.s10].stop();
+       // GameData._i().gamesound[SoundName.s10].stop();
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
 
@@ -360,7 +378,7 @@ class GameScene extends GameUtil.BassPanel {
             this.showlyric(10, this.FirstContain);
         }, this);
 
-        egret.setTimeout(this.showscth, this, 4500);
+        egret.setTimeout(this.showscth, this, 5000);
     }
     ////画面13
     private showscth() {
@@ -396,7 +414,7 @@ class GameScene extends GameUtil.BassPanel {
             this.showlyric(11, this.SecondContain);
         }, this);;
 
-        egret.setTimeout(this.showscft, this, 3500);
+        egret.setTimeout(this.showscft, this, 4500);
     }
     ////画面14
     private showscft() {
@@ -433,7 +451,7 @@ class GameScene extends GameUtil.BassPanel {
             egret.Tween.get(qt).to({ x: pos[id][0], y: pos[id][1], scaleX: 1, scaleY: 1 }, 200 - id * 20).call(() => {
                 id++;
                 if (id > 12) {
-                    egret.setTimeout(self.showscfif, self, 1500);
+                    egret.setTimeout(self.showscfif, self, 1800);
                 } else {
                     downqt(id);
                 }
@@ -471,7 +489,7 @@ class GameScene extends GameUtil.BassPanel {
 
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 800);
         egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).call(() => {
-            egret.setTimeout(this.showscsit, this, 1500);
+            egret.setTimeout(this.showscsit, this, 2200);
             this.showlyric(13, this.SecondContain);
         }, this);
 
@@ -514,7 +532,7 @@ class GameScene extends GameUtil.BassPanel {
             this.showlyric(14, this.FirstContain);
         }, this);
 
-        egret.setTimeout(this.showscset, this, 1500);
+        egret.setTimeout(this.showscset, this, 2000);
 
     }
     ////画面17
@@ -533,7 +551,7 @@ class GameScene extends GameUtil.BassPanel {
 
         var self = this;
         function downqt(id) {
-            var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 873], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [261, 364], [76, 132], [102, 621],[682,722]];
+            var pos = [[122, 87], [362, 226], [349, 475], [540, 607], [151, 850], [619, 1275], [156, 611], [209, 1053], [395, 861], [552, 263], [654, 873], [322, 677], [162, 1258], [348, 1086], [2, 348], [719, 197], [427, 21], [615, 784], [627, 413], [194, 934], [687, 1090], [94, 1115], [261, 364], [76, 132], [102, 621], [682, 722]];
             let qt = self.SecondContain.getChildByName('qt' + id);
             qt.visible = true;
 
@@ -560,30 +578,34 @@ class GameScene extends GameUtil.BassPanel {
 
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
-        var img = new MyBitmap(RES.getRes('pic18_0_jpg'), posx, posy);
+        var img = new MyBitmap(RES.getRes('lookphone_jpg'), posx, posy);
         this.FirstContain.addChild(img);
-
+        var hand = new MyBitmap(RES.getRes('lookphone_2_png'), this.mStageW / 2, this.mStageH / 2);
+        this.FirstContain.addChild(hand);
+        
         egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
         egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(() => {
+            egret.Tween.get(hand).to({ texture: RES.getRes('lookphone_1_png') }).wait(400).to({ texture: RES.getRes('lookphone_2_png') }).wait(400).to({ texture: RES.getRes('lookphone_1_png')});
+
             egret.setTimeout(() => {
                 GameData._i().gamesound[SoundName.s2_1].play();
                 var qt = new MyBitmap(RES.getRes('pic18_0_png'), 292, 553);
                 qt.name = 'qt';
                 this.FirstContain.addChild(qt);
-            }, this, 300);
+            }, this, 900);
             egret.setTimeout(() => {
                 this.FirstContain.removeChild(this.FirstContain.getChildByName('qt'));
                 GameData._i().gamesound[SoundName.s2_1].stop();
                 GameData._i().gamesound[SoundName.s2].play();
                 img.setNewTexture(RES.getRes('pic18_1_jpg'));
-            }, this, 900);
+            }, this, 1500);
         }, this);
 
         egret.setTimeout(() => {
             egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 500).wait(300).call(() => {
                 this.showscnt();
             }, this);
-        }, this, 2000);
+        }, this, 2600);
     }
     ////画面19
     private showscnt() {

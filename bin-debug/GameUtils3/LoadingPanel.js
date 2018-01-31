@@ -61,8 +61,6 @@ var GameUtil;
                 // var loadbgpic = new MyBitmap(RES.getRes('loadbg_jpg'), 0, 0);
                 // loadbgpic.setanchorOff(0, 0);
                 // this.addChild(loadbgpic);
-                if (GameConfig.IsLoadSound)
-                    this.loadsound();
                 var loadingbgbar = new MyBitmap(RES.getRes('loadingbarbg_png'), this.loadingbarOffX, this.mStageH / 2 + this.loadingbarOffY);
                 loadingbgbar.x = (this.mStageW - loadingbgbar.texture.textureWidth) / 2;
                 loadingbgbar.anchorOffsetX = 0;
@@ -104,6 +102,8 @@ var GameUtil;
             //initiate Resource loading library
             RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
             RES.loadConfig("resource/default.res.json", "resource/");
+            if (GameConfig.IsLoadSound)
+                this.loadsound();
         };
         /**
          * 配置文件加载完成,开始预加载preload资源组。
@@ -170,4 +170,3 @@ var GameUtil;
     GameUtil.LoadingPanel = LoadingPanel;
     __reflect(LoadingPanel.prototype, "GameUtil.LoadingPanel");
 })(GameUtil || (GameUtil = {}));
-//# sourceMappingURL=LoadingPanel.js.map

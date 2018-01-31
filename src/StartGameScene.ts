@@ -9,7 +9,7 @@ class StartGameScene extends GameUtil.BassPanel {
     }
 
     public init() {
-       // BGMPlayer._i().play(SoundName.sbgm);
+        // BGMPlayer._i().play(SoundName.sbgm);
         var data: any = {
             'code': 1
         };
@@ -58,20 +58,39 @@ class StartGameScene extends GameUtil.BassPanel {
         shap.height = this.mStageH;
         this.addChild(shap);
 
-        var btn: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_png', 'msgtip_png', this.startgame);
+        var btn: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_2_png', 'msgtip_2_png', () => { });
         btn.x = this.mStageW / 2;
-        btn.y = 654-150;
+        btn.y = 508;
         this.addChild(btn);
-        btn.scaleX = btn.scaleY = 0.4;
-        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400).call(() => {
-            egret.Tween.get(btn, { loop: true }).to({ scaleX: 0.98,scaleY:0.98 }, 800).to({ scaleX: 1,scaleY:1 }, 800);
-        },this);
+        btn.scaleX = btn.scaleY = 0;
+        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(() => {
+            GameData._i().gamesound[SoundName.s1].play();
+            var btn2: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_1_png', 'msgtip_1_png', () => { });
+            btn2.x = this.mStageW / 2;
+            btn2.y = 508;
+            this.addChild(btn2);
+            btn2.scaleX = btn2.scaleY = 0;
+            egret.Tween.get(btn).to({ y: 708 }, 400);
+            egret.Tween.get(btn2).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(() => {
+                GameData._i().gamesound[SoundName.s1].play();
+                var btn3: GameUtil.Menu = new GameUtil.Menu(this, 'msgtip_0_png', 'msgtip_0_png', this.startgame);
+                btn3.x = this.mStageW / 2;
+                btn3.y = 508;
+                this.addChild(btn3);
+                btn3.scaleX = btn3.scaleY = 0;
+                egret.Tween.get(btn2).to({ y: 708 }, 400);
+                egret.Tween.get(btn).to({ y: 908 }, 400);
+                egret.Tween.get(btn3).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(() => {
+                    egret.Tween.get(btn3, { loop: true }).to({ scaleX: 0.98, scaleY: 0.98 }, 800).to({ scaleX: 1, scaleY: 1 }, 800);
+                }, this);
+            }, this);
+        }, this);
         GameData._i().gamesound[SoundName.s1].play();
 
         var tip: MyBitmap = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
         this.addChild(tip);
 
-        egret.Tween.get(tip, { loop: true }).to({ scaleX: 1.1,scaleY:1.1 }, 500).to({ scaleX: 1,scaleY:1 }, 500);
+        egret.Tween.get(tip, { loop: true }).to({ scaleX: 1.1, scaleY: 1.1 }, 500).to({ scaleX: 1, scaleY: 1 }, 500);
 
     }
 
@@ -80,6 +99,7 @@ class StartGameScene extends GameUtil.BassPanel {
         GameUtil.trace('startgame');
         GameData._i().gamesound[SoundName.s2].play(0, 1);
         GameUtil.GameScene.runscene(new GameScene());
+        //GameUtil.GameScene.runscene(new CreateHaibaoPage(2));
     }
     /**游戏排行榜 */
     private gamerank() {

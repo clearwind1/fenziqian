@@ -35,19 +35,31 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		this.addChild(this.tipContain);
 
 		egret.setTimeout(this.showgz, this, 1000);
+		egret.setTimeout(this.showsharetip, this, 4000);
 	}
+
+	public shareImage(target: egret.DisplayObject): void {
+        var renderTexture = new egret.RenderTexture();
+        renderTexture.drawToTexture(target);//渲染到临时画布
+        var divImage = document.getElementById("divImage");//获取DIV
+        var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
+		shareImage.src = renderTexture.toDataURL('image/jpeg');//把数据赋值给Image
+		shareImage.width = document.body.clientWidth;
+		shareImage.height = document.body.clientHeight;
+        divImage.style.display = "block";//显示DIV
+    }
 
 	private showgz() {
 		var coverbg: egret.Shape = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
 		this.tipContain.addChild(coverbg);
 
-		var tipbg: MyBitmap = new MyBitmap(RES.getRes('tipgz_png'), this.mStageW / 2, 600);
+		var tipbg: MyBitmap = new MyBitmap(RES.getRes('tipgz_png'), this.mStageW / 2, 571);
 		this.tipContain.addChild(tipbg);
 
 		var closebtn: GameUtil.Menu = new GameUtil.Menu(this, 'closebtn_png', 'closebtn_png', this.closegz);
 		closebtn.setScaleMode();
-		closebtn.x = 648;
-		closebtn.y = 484;
+		closebtn.x = 688;
+		closebtn.y = 430;
 		this.tipContain.addChild(closebtn);
 
 		var havegzbtn: GameUtil.Menu = new GameUtil.Menu(this, 'havegzbtn_png', 'havegzbtn_png', this.closegz);
@@ -66,9 +78,29 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 
 	private closegz() {
 		this.removeChild(this.tipContain);
+		this.tipContain = null;
 	}
 	private jumpgz() {
 		window.location.href = "http://tingfeng.tristana.cn/fenziqianv04/qrcode.html";
+	}
+	private showsharetip() {
+		var sharetipcontain: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+		this.addChild(sharetipcontain);
+		var shar = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
+		sharetipcontain.addChild(shar);
+		if (this.tipContain !=null) {
+			this.closegz();
+		}
+		var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW, 0);
+		sharetip.setanchorOff(1, 0);
+		sharetipcontain.addChild(sharetip);
+		shar.$setTouchEnabled(true);
+
+		shar.addEventListener(egret.TouchEvent.TOUCH_TAP, () => { 
+			this.removeChild(sharetipcontain);
+			//this.shareImage(this.$stage);
+		}, this);
+
 	}
 
 	private backgamescene() {

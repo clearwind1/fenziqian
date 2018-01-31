@@ -41,6 +41,7 @@ var StartGameScene = (function (_super) {
         // shap.width = this.mStageW;
         // shap.height = this.mStageH;
         // this.addChild(shap);
+        var _this = this;
         // var posx = this.mStageW / 2;
         // var posy = this.mStageH / 2;
         // var gametitletext = new GameUtil.MyTextField(posx, 400, 100, 0.5, 0.5);
@@ -61,13 +62,32 @@ var StartGameScene = (function (_super) {
         shap.width = this.mStageW;
         shap.height = this.mStageH;
         this.addChild(shap);
-        var btn = new GameUtil.Menu(this, 'msgtip_png', 'msgtip_png', this.startgame);
+        var btn = new GameUtil.Menu(this, 'msgtip_2_png', 'msgtip_2_png', function () { });
         btn.x = this.mStageW / 2;
-        btn.y = 654 - 150;
+        btn.y = 508;
         this.addChild(btn);
-        btn.scaleX = btn.scaleY = 0.4;
-        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400).call(function () {
-            egret.Tween.get(btn, { loop: true }).to({ scaleX: 0.98, scaleY: 0.98 }, 800).to({ scaleX: 1, scaleY: 1 }, 800);
+        btn.scaleX = btn.scaleY = 0;
+        egret.Tween.get(btn).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(function () {
+            GameData._i().gamesound[SoundName.s1].play();
+            var btn2 = new GameUtil.Menu(_this, 'msgtip_1_png', 'msgtip_1_png', function () { });
+            btn2.x = _this.mStageW / 2;
+            btn2.y = 508;
+            _this.addChild(btn2);
+            btn2.scaleX = btn2.scaleY = 0;
+            egret.Tween.get(btn).to({ y: 708 }, 400);
+            egret.Tween.get(btn2).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(function () {
+                GameData._i().gamesound[SoundName.s1].play();
+                var btn3 = new GameUtil.Menu(_this, 'msgtip_0_png', 'msgtip_0_png', _this.startgame);
+                btn3.x = _this.mStageW / 2;
+                btn3.y = 508;
+                _this.addChild(btn3);
+                btn3.scaleX = btn3.scaleY = 0;
+                egret.Tween.get(btn2).to({ y: 708 }, 400);
+                egret.Tween.get(btn).to({ y: 908 }, 400);
+                egret.Tween.get(btn3).to({ scaleX: 1, scaleY: 1 }, 400).wait(300).call(function () {
+                    egret.Tween.get(btn3, { loop: true }).to({ scaleX: 0.98, scaleY: 0.98 }, 800).to({ scaleX: 1, scaleY: 1 }, 800);
+                }, _this);
+            }, _this);
         }, this);
         GameData._i().gamesound[SoundName.s1].play();
         var tip = new MyBitmap(RES.getRes('tiptxt_png'), this.mStageW / 2, 1108);
@@ -79,6 +99,7 @@ var StartGameScene = (function (_super) {
         GameUtil.trace('startgame');
         GameData._i().gamesound[SoundName.s2].play(0, 1);
         GameUtil.GameScene.runscene(new GameScene());
+        //GameUtil.GameScene.runscene(new CreateHaibaoPage(2));
     };
     /**游戏排行榜 */
     StartGameScene.prototype.gamerank = function () {
@@ -102,4 +123,3 @@ var StartGameScene = (function (_super) {
     return StartGameScene;
 }(GameUtil.BassPanel));
 __reflect(StartGameScene.prototype, "StartGameScene");
-//# sourceMappingURL=StartGameScene.js.map
