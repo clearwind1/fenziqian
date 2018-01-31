@@ -13,6 +13,7 @@ class GameData {
     public GameScore: number;               //游戏分数
     public HeightScore: number;             //最高分数
     public Nickname: string;
+    public imageBase64: string;
     public imageUrl: string;
     public isSound: boolean;
 
@@ -30,6 +31,7 @@ class GameData {
         this.HeightScore = 0;
         this.isSound = true;
         this.Nickname = ' 人情用户';
+        this.imageBase64 = '';
         this.imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
     }
 

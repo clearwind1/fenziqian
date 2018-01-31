@@ -99,7 +99,7 @@ var StartGameScene = (function (_super) {
         GameUtil.trace('startgame');
         GameData._i().gamesound[SoundName.s2].play(0, 1);
         GameUtil.GameScene.runscene(new GameScene());
-        //GameUtil.GameScene.runscene(new CreateHaibaoPage(2));
+        //GameUtil.GameScene.runscene(new AnswerPage());
     };
     /**游戏排行榜 */
     StartGameScene.prototype.gamerank = function () {

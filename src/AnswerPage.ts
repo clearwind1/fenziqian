@@ -46,8 +46,8 @@ class AnswerPage extends GameUtil.BassPanel {
 		var param: Object = {
             option: (this.selectID+1)
         }
+		//GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this,'tingfeng.free.ngrok.cc');
 		GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this);
-		
 		//GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
 	}
 	private updone(data) {
@@ -62,6 +62,7 @@ class AnswerPage extends GameUtil.BassPanel {
 			if (GameData._i().imageUrl.length < 8) {
 				GameData._i().imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
 			}
+			GameData._i().imageBase64 = info['avatarBase64'];
 			GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
 		} else
 		{

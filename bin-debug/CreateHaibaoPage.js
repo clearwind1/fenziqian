@@ -23,6 +23,7 @@ var CreateHaibaoPage = (function (_super) {
         this.show();
     };
     CreateHaibaoPage.prototype.show = function () {
+        var _this = this;
         var Haibaopic = new MyBitmap(RES.getRes('haibao' + this.selectID + '_jpg'), 0, 0);
         Haibaopic.setanchorOff(0, 0);
         this.addChild(Haibaopic);
@@ -31,10 +32,19 @@ var CreateHaibaoPage = (function (_super) {
         nickname.textColor = 0xffd11f;
         this.addChild(nickname);
         //头像
-        var headimg = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
-        headimg.x = 55;
-        headimg.y = 43;
-        this.addChild(headimg);
+        // var headimg: GetImageByUrl = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
+        // headimg.x = 55;
+        // headimg.y = 43;
+        // this.addChild(headimg);
+        var bmp = new egret.Bitmap();
+        bmp.x = 55;
+        bmp.y = 43;
+        egret.BitmapData.create('base64', GameData._i().imageBase64, function (bitmapData) {
+            bmp.bitmapData = bitmapData;
+            bmp.width = 140;
+            bmp.height = 140;
+            _this.addChild(bmp);
+        });
         // var backbtn: GameUtil.Menu = new GameUtil.Menu(this, 'backbtn_png', 'backbtn_png', this.backgamescene);
         // backbtn.setScaleMode();
         // backbtn.x = 375;
@@ -42,8 +52,7 @@ var CreateHaibaoPage = (function (_super) {
         // this.addChild(backbtn);
         this.tipContain = new egret.DisplayObjectContainer;
         this.addChild(this.tipContain);
-        egret.setTimeout(this.showgz, this, 1000);
-        egret.setTimeout(this.showsharetip, this, 4000);
+        egret.setTimeout(this.showgz, this, 100);
     };
     CreateHaibaoPage.prototype.shareImage = function (target) {
         var renderTexture = new egret.RenderTexture();
@@ -79,6 +88,7 @@ var CreateHaibaoPage = (function (_super) {
     CreateHaibaoPage.prototype.closegz = function () {
         this.removeChild(this.tipContain);
         this.tipContain = null;
+        this.showsharetip();
     };
     CreateHaibaoPage.prototype.jumpgz = function () {
         window.location.href = "http://tingfeng.tristana.cn/fenziqianv04/qrcode.html";
@@ -89,16 +99,13 @@ var CreateHaibaoPage = (function (_super) {
         this.addChild(sharetipcontain);
         var shar = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
         sharetipcontain.addChild(shar);
-        if (this.tipContain != null) {
-            this.closegz();
-        }
         var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW, 0);
         sharetip.setanchorOff(1, 0);
         sharetipcontain.addChild(sharetip);
         shar.$setTouchEnabled(true);
         shar.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             _this.removeChild(sharetipcontain);
-            //this.shareImage(this.$stage);
+            _this.shareImage(_this.$stage);
         }, this);
     };
     CreateHaibaoPage.prototype.backgamescene = function () {

@@ -52,7 +52,7 @@ var AnswerPage = (function (_super) {
         var param = {
             option: (this.selectID + 1)
         };
-        GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this);
+        GameUtil.Http.getinstance().send(param, '/api/submitAnswer', this.updone, this, 'tingfeng.free.ngrok.cc');
         //GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
     };
     AnswerPage.prototype.updone = function (data) {
@@ -67,6 +67,7 @@ var AnswerPage = (function (_super) {
             if (GameData._i().imageUrl.length < 8) {
                 GameData._i().imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
             }
+            GameData._i().imageBase64 = info['avatarBase64'];
             GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
         }
         else {
