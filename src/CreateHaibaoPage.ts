@@ -45,7 +45,7 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		this.tipContain = new egret.DisplayObjectContainer;
 		this.addChild(this.tipContain);
 
-		egret.setTimeout(this.showgz, this, 100);
+		egret.setTimeout(this.showgz, this, 5000);
 	}
 
 	public shareImage(target: egret.DisplayObject): void {
@@ -89,18 +89,23 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 	private closegz() {
 		this.removeChild(this.tipContain);
 		this.tipContain = null;
-		this.showsharetip();
+		egret.setTimeout(this.showsharetip, this, 3000);
 	}
 	private jumpgz() {
-		window.location.href = "http://tingfeng.tristana.cn/fenziqianv04/qrcode.html";
+		if (window.top) {
+			window.top.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
+		}
+		else {
+			window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
+		}
+		
 	}
 	private showsharetip() {
 		var sharetipcontain: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
 		this.addChild(sharetipcontain);
 		var shar = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
 		sharetipcontain.addChild(shar);
-		var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW, 0);
-		sharetip.setanchorOff(1, 0);
+		var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW/2, this.mStageH/2);
 		sharetipcontain.addChild(sharetip);
 		shar.$setTouchEnabled(true);
 

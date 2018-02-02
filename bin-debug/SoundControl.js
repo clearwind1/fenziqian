@@ -20,11 +20,12 @@ var SoundControl = (function (_super) {
         this.showbtn();
     };
     SoundControl.prototype.showbtn = function () {
-        this.btnon = new GameUtil.Menu(this, 'soundbtnon_png', 'soundbtnon_png', this.changesound);
+        var btnName = GameConfig._i().bgamesound ? 'soundbtnon_png' : 'soundbtnoff_png';
+        this.btnon = new GameUtil.Menu(this, btnName, btnName, this.changesound);
         this.btnon.x = this.mStageW - 60;
         this.btnon.y = 60;
         this.addChild(this.btnon);
-        this.setrotation(true);
+        this.setrotation(GameConfig._i().bgamesound);
     };
     SoundControl.prototype.changesound = function () {
         GameConfig._i().bgamesound = !GameConfig._i().bgamesound;

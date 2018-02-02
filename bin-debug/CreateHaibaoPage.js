@@ -91,7 +91,12 @@ var CreateHaibaoPage = (function (_super) {
         this.showsharetip();
     };
     CreateHaibaoPage.prototype.jumpgz = function () {
-        window.location.href = "http://tingfeng.tristana.cn/fenziqianv04/qrcode.html";
+        if (window.top) {
+            window.top.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
+        }
+        else {
+            window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
+        }
     };
     CreateHaibaoPage.prototype.showsharetip = function () {
         var _this = this;
@@ -99,8 +104,7 @@ var CreateHaibaoPage = (function (_super) {
         this.addChild(sharetipcontain);
         var shar = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
         sharetipcontain.addChild(shar);
-        var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW, 0);
-        sharetip.setanchorOff(1, 0);
+        var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW / 2, this.mStageH / 2);
         sharetipcontain.addChild(sharetip);
         shar.$setTouchEnabled(true);
         shar.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

@@ -9,11 +9,13 @@ class SoundControl extends GameUtil.BassPanel {
 		this.showbtn();
 	}
 	private showbtn() {
-		this.btnon = new GameUtil.Menu(this, 'soundbtnon_png', 'soundbtnon_png', this.changesound);
+		var btnName = GameConfig._i().bgamesound ? 'soundbtnon_png' : 'soundbtnoff_png';
+		this.btnon = new GameUtil.Menu(this, btnName, btnName, this.changesound);
 		this.btnon.x = this.mStageW - 60;
 		this.btnon.y = 60;
 		this.addChild(this.btnon);
-		this.setrotation(true);
+
+		this.setrotation(GameConfig._i().bgamesound);
 	}
 	private changesound() {
 		GameConfig._i().bgamesound = !GameConfig._i().bgamesound;
