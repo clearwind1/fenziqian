@@ -92,12 +92,7 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		egret.setTimeout(this.showsharetip, this, 3000);
 	}
 	private jumpgz() {
-		if (window.top) {
-			window.top.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
-		}
-		else {
-			window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
-		}
+		window.top.location.href = "http://tingfeng.tristana.cn/showqrcode/qrcode.html";
 		
 	}
 	private showsharetip() {
