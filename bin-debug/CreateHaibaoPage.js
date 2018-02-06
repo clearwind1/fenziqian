@@ -52,16 +52,16 @@ var CreateHaibaoPage = (function (_super) {
         // this.addChild(backbtn);
         this.tipContain = new egret.DisplayObjectContainer;
         this.addChild(this.tipContain);
-        egret.setTimeout(this.showgz, this, 100);
+        egret.setTimeout(this.showgz, this, 5000);
     };
     CreateHaibaoPage.prototype.shareImage = function (target) {
         var renderTexture = new egret.RenderTexture();
         renderTexture.drawToTexture(target); //渲染到临时画布
         var divImage = document.getElementById("divImage"); //获取DIV
         var shareImage = document.getElementById("shareImage"); //获取Image标签
-        shareImage.src = renderTexture.toDataURL('image/jpeg'); //把数据赋值给Image
-        shareImage.width = document.body.clientWidth;
-        shareImage.height = document.body.clientHeight;
+        shareImage.src = renderTexture.toDataURL('image/png'); //把数据赋值给Image
+        shareImage.width = window.top.document.body.clientWidth;
+        shareImage.height = window.top.document.body.clientHeight;
         divImage.style.display = "block"; //显示DIV
     };
     CreateHaibaoPage.prototype.showgz = function () {
@@ -88,15 +88,10 @@ var CreateHaibaoPage = (function (_super) {
     CreateHaibaoPage.prototype.closegz = function () {
         this.removeChild(this.tipContain);
         this.tipContain = null;
-        this.showsharetip();
+        egret.setTimeout(this.showsharetip, this, 3000);
     };
     CreateHaibaoPage.prototype.jumpgz = function () {
-        if (window.top) {
-            window.top.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
-        }
-        else {
-            window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4MjQzMTA5MA==&scene=124#wechat_redirect";
-        }
+        window.top.location.href = "http://tingfeng.tristana.cn/showqrcode/qrcode.html";
     };
     CreateHaibaoPage.prototype.showsharetip = function () {
         var _this = this;
@@ -118,3 +113,4 @@ var CreateHaibaoPage = (function (_super) {
     return CreateHaibaoPage;
 }(GameUtil.BassPanel));
 __reflect(CreateHaibaoPage.prototype, "CreateHaibaoPage");
+//# sourceMappingURL=CreateHaibaoPage.js.map

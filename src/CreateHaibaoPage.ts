@@ -53,9 +53,9 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		renderTexture.drawToTexture(target);//渲染到临时画布
 		var divImage = document.getElementById("divImage");//获取DIV
 		var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
-		shareImage.src = renderTexture.toDataURL('image/jpeg');//把数据赋值给Image
-		shareImage.width = document.body.clientWidth;
-		shareImage.height = document.body.clientHeight;
+		shareImage.src = renderTexture.toDataURL('image/png');//把数据赋值给Image
+		shareImage.width = window.top.document.body.clientWidth;
+		shareImage.height = window.top.document.body.clientHeight;
 		divImage.style.display = "block";//显示DIV
 	}
 

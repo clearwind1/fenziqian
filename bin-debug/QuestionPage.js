@@ -36,3 +36,4 @@ var QuestionPage = (function (_super) {
     return QuestionPage;
 }(GameUtil.BassPanel));
 __reflect(QuestionPage.prototype, "QuestionPage");
+//# sourceMappingURL=QuestionPage.js.map

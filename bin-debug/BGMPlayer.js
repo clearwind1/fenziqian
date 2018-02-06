@@ -64,3 +64,4 @@ var BGMPlayer = (function () {
     return BGMPlayer;
 }());
 __reflect(BGMPlayer.prototype, "BGMPlayer");
+//# sourceMappingURL=BGMPlayer.js.map

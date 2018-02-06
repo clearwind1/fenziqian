@@ -78,3 +78,4 @@ var AnswerPage = (function (_super) {
     return AnswerPage;
 }(GameUtil.BassPanel));
 __reflect(AnswerPage.prototype, "AnswerPage");
+//# sourceMappingURL=AnswerPage.js.map

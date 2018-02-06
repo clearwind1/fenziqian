@@ -63,6 +63,7 @@ class AnswerPage extends GameUtil.BassPanel {
 				GameData._i().imageUrl = 'http://wx.qlogo.cn/mmopen/vi_32/mZeQYkK1XCmP2UJFpYOf2W16wiazRBNcIkAjnhYicv0VfRBRiamB9yG1Zv3icIGJeo15zkXjib7icXVdv4wXUFDXumAw/132';
 			}
 			GameData._i().imageBase64 = info['avatarBase64'];
+			alert(info['avatarBase64']);
 			GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
 		} else
 		{

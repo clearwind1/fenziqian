@@ -64,10 +64,11 @@ var GameScene = (function (_super) {
         this.addChild(this.SecondContain);
         this.showLookphone();
         //测试
-        //this.showscet();
+        //this.showscttf();
     };
     //画面2
     GameScene.prototype.showLookphone = function () {
+        this.stage.scaleMode = egret.StageScaleMode.FIXED_WIDE;
         var lookphone = new MyBitmap(RES.getRes('lookphone_png'), this.mStageW / 2, this.mStageH / 2);
         lookphone.$setScaleX(1.4);
         lookphone.$setScaleY(1.4);
@@ -93,6 +94,7 @@ var GameScene = (function (_super) {
     };
     //画面3
     GameScene.prototype.showamazing = function () {
+        //this.stage.scaleMode = egret.StageScaleMode.EXACT_FIT;
         BGMPlayer._i().play(SoundName.s27bgm, 1);
         this.FirstContain.alpha = 0;
         GameData._i().gamesound[SoundName.s2].stop();
@@ -109,6 +111,7 @@ var GameScene = (function (_super) {
     GameScene.prototype.showresb = function () {
         var _this = this;
         this.FirstContain.removeChildren();
+        //this.stage.scaleMode = egret.StageScaleMode.FIXED_WIDTH;
         var lookphone = new MyBitmap(RES.getRes('lookphone_jpg'), this.mStageW / 2, this.mStageH / 2);
         this.FirstContain.addChild(lookphone);
         var hand = new MyBitmap(RES.getRes('lookphone_3_png'), this.mStageW / 2, this.mStageH / 2);
@@ -129,7 +132,7 @@ var GameScene = (function (_super) {
             _this.showlyric(1, _this.FirstContain);
             egret.setTimeout(function () {
                 egret.Tween.get(_this.FirstContain.getChildByName('lyricpic')).to({ alpha: 0 }, 700);
-                var lyricpic = new MyBitmap(RES.getRes('cripic1_1_png'), 389, 1141);
+                var lyricpic = new MyBitmap(RES.getRes('cripic1_1_png'), 389, GameConfig.getSH() - 203);
                 _this.FirstContain.addChild(lyricpic);
                 lyricpic.alpha = 0;
                 egret.Tween.get(lyricpic).to({ alpha: 1 }, 700);
@@ -170,6 +173,7 @@ var GameScene = (function (_super) {
     //画面5
     GameScene.prototype.showflfq = function () {
         var _this = this;
+        this.stage.scaleMode = egret.StageScaleMode.EXACT_FIT;
         GameData._i().gamesound[SoundName.s2_1].stop();
         this.FirstContain.removeChildren();
         this.SecondContain.removeChildren();
@@ -189,7 +193,7 @@ var GameScene = (function (_super) {
         GameData._i().gamesound[SoundName.s5].play();
         egret.Tween.get(this.SecondContain).to({ alpha: 1 }, 500).call(function () {
             var lyricpic = new MyBitmap(RES.getRes('cripic2_0_png'), 382, 185);
-            _this.FirstContain.addChild(lyricpic);
+            _this.SecondContain.addChild(lyricpic);
             lyricpic.alpha = 0;
             egret.Tween.get(lyricpic).to({ alpha: 1 }, 700).wait(1400).call(function () {
                 egret.Tween.get(lyricpic).to({ alpha: 0 }, 700);
@@ -563,25 +567,27 @@ var GameScene = (function (_super) {
         this.FirstContain.addChild(img);
         var hand = new MyBitmap(RES.getRes('lookphone_2_png'), this.mStageW / 2, this.mStageH / 2);
         this.FirstContain.addChild(hand);
-        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500);
-        egret.Tween.get(this.FirstContain).to({ alpha: 1 }, 500).call(function () {
-            egret.Tween.get(hand).to({ texture: RES.getRes('lookphone_1_png') }).wait(400).to({ texture: RES.getRes('lookphone_2_png') }).wait(400).to({ texture: RES.getRes('lookphone_1_png') });
-            egret.setTimeout(function () {
-                GameData._i().gamesound[SoundName.s2_1].play();
-                var qt = new MyBitmap(RES.getRes('pic18_0_png'), 292, 553);
-                qt.name = 'qt';
-                _this.FirstContain.addChild(qt);
-            }, _this, 900);
-            egret.setTimeout(function () {
-                _this.FirstContain.removeChild(_this.FirstContain.getChildByName('qt'));
-                GameData._i().gamesound[SoundName.s2_1].stop();
-                GameData._i().gamesound[SoundName.s2].play();
-                img.setNewTexture(RES.getRes('pic18_1_jpg'));
-            }, _this, 1500);
-        }, this);
+        egret.Tween.get(this.SecondContain).to({ alpha: 0 }, 500).call(function () {
+            _this.stage.scaleMode = egret.StageScaleMode.FIXED_WIDE;
+            egret.Tween.get(_this.FirstContain).to({ alpha: 1 }, 500).call(function () {
+                egret.Tween.get(hand).to({ texture: RES.getRes('lookphone_1_png') }).wait(400).to({ texture: RES.getRes('lookphone_2_png') }).wait(400).to({ texture: RES.getRes('lookphone_1_png') });
+                egret.setTimeout(function () {
+                    GameData._i().gamesound[SoundName.s2_1].play();
+                    var qt = new MyBitmap(RES.getRes('pic18_0_png'), 292, 553);
+                    qt.name = 'qt';
+                    _this.FirstContain.addChild(qt);
+                }, _this, 900);
+                egret.setTimeout(function () {
+                    _this.FirstContain.removeChild(_this.FirstContain.getChildByName('qt'));
+                    GameData._i().gamesound[SoundName.s2_1].stop();
+                    GameData._i().gamesound[SoundName.s2].play();
+                    img.setNewTexture(RES.getRes('pic18_1_jpg'));
+                }, _this, 1500);
+            }, _this);
+        });
         egret.setTimeout(function () {
             _this.showscnt();
-        }, this, 2600);
+        }, this, 3100);
     };
     ////画面19
     GameScene.prototype.showscnt = function () {
@@ -589,13 +595,14 @@ var GameScene = (function (_super) {
         this.SecondContain.removeChildren();
         this.SecondContain.alpha = 0;
         GameData._i().gamesound[SoundName.s2].stop();
-        BGMPlayer._i().play(SoundName.s19bgm);
         var posx = this.mStageW / 2;
         var posy = this.mStageH / 2;
         var img = new MyBitmap(RES.getRes('pic19_jpg'), posx, posy);
         this.SecondContain.addChild(img);
-        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).wait(100).call(function () {
+        egret.Tween.get(this.FirstContain).to({ alpha: 0 }, 800).wait(500).call(function () {
+            _this.stage.scaleMode = egret.StageScaleMode.EXACT_FIT;
             egret.Tween.get(_this.SecondContain).to({ alpha: 1 }, 800).call(function () {
+                BGMPlayer._i().play(SoundName.s19bgm);
                 GameData._i().gamesound[SoundName.s19].play();
                 egret.setTimeout(_this.showsctt, _this, 1500);
             }, _this);
@@ -716,7 +723,7 @@ var GameScene = (function (_super) {
     //添加显示歌词    
     GameScene.prototype.showlyric = function (id, contain) {
         var posx = [361, 350, 368, 412, 1845, 379, 382, 363, 366, 432, 378, 358, 375, 380, 379, 381,];
-        var posy = [201, 1222, 219, 124, 1132, 1107, 519, 1178, 170, 245, 120, 189, 198, 1046, 171, 655,];
+        var posy = [201, GameConfig.getSH() - 203, 219, 124, 1132, 1107, 519, 1178, 170, 245, 120, 189, 198, 1046, 171, 655,];
         var lyricpic = new MyBitmap(RES.getRes('cripic' + id + '_png'), posx[id], posy[id]);
         lyricpic.name = 'lyricpic';
         contain.addChild(lyricpic);
@@ -874,3 +881,4 @@ var GameScene = (function (_super) {
     return GameScene;
 }(GameUtil.BassPanel));
 __reflect(GameScene.prototype, "GameScene");
+//# sourceMappingURL=GameScene.js.map

@@ -76,3 +76,4 @@ var GameUtil;
     GameUtil.Http = Http;
     __reflect(Http.prototype, "GameUtil.Http");
 })(GameUtil || (GameUtil = {}));
+//# sourceMappingURL=Http.js.map

@@ -33,6 +33,11 @@ module GameUtil {
 
         public init(): void {
             //RES.getResByUrl(this.imageUrl,this.onComplete,this,RES.ResourceItem.TYPE_IMAGE);
+            RES.web.Html5VersionController.prototype.getVirtualUrl = function (url) {
+                //console.log('version===', window['version']);
+                url += "?v=" + window['version'];
+                return url;
+            }
             new GameUtil.LoadingLogopre(this.onComplete, this);
         }
         private loadsound() {

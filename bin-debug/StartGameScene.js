@@ -55,6 +55,9 @@ var StartGameScene = (function (_super) {
         // startbtn.x = this.mStageW / 2;
         // startbtn.y = this.mStageH / 2;
         // this.addChild(startbtn);
+        /*
+        <img data-ratio="0.55625" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/D3K0tvCbUZ3qm4ojfAVTDSE9D2Nwt1ibHb3VLwXwgSicfOzQ5E1KXU6xPrg7t4Kn7HmFicUicyqDjSobbTtjdqlw6Q/640?wx_fmt=jpeg" data-type="jpeg" data-w="640" style="vertical-align: middle; box-sizing: border-box; width: auto !important; height: auto !important; visibility: visible !important;" class="" src="https://mmbiz.qpic.cn/mmbiz_jpg/D3K0tvCbUZ3qm4ojfAVTDSE9D2Nwt1ibHb3VLwXwgSicfOzQ5E1KXU6xPrg7t4Kn7HmFicUicyqDjSobbTtjdqlw6Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" data-fail="0">
+        */
         //------------------新的---------------------------//
         //消息提示
         var shap = new MyBitmap(RES.getRes('phonetip_jpg'), 0, 0);
@@ -123,3 +126,4 @@ var StartGameScene = (function (_super) {
     return StartGameScene;
 }(GameUtil.BassPanel));
 __reflect(StartGameScene.prototype, "StartGameScene");
+//# sourceMappingURL=StartGameScene.js.map

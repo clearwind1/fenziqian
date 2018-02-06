@@ -38,6 +38,11 @@ var GameUtil;
         }
         LoadingPanel.prototype.init = function () {
             //RES.getResByUrl(this.imageUrl,this.onComplete,this,RES.ResourceItem.TYPE_IMAGE);
+            RES.web.Html5VersionController.prototype.getVirtualUrl = function (url) {
+                //console.log('version===', window['version']);
+                url += "?v=" + window['version'];
+                return url;
+            };
             new GameUtil.LoadingLogopre(this.onComplete, this);
         };
         LoadingPanel.prototype.loadsound = function () {
@@ -170,3 +175,4 @@ var GameUtil;
     GameUtil.LoadingPanel = LoadingPanel;
     __reflect(LoadingPanel.prototype, "GameUtil.LoadingPanel");
 })(GameUtil || (GameUtil = {}));
+//# sourceMappingURL=LoadingPanel.js.map
