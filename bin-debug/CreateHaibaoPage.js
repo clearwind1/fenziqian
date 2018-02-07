@@ -27,7 +27,7 @@ var CreateHaibaoPage = (function (_super) {
         var Haibaopic = new MyBitmap(RES.getRes('haibao' + this.selectID + '_jpg'), 0, 0);
         Haibaopic.setanchorOff(0, 0);
         this.addChild(Haibaopic);
-        var nickname = new GameUtil.MyTextField(442, 93, 40, 0.5, 0.5);
+        var nickname = new GameUtil.MyTextField(374, 93, 40, 0.5, 0.5);
         nickname.setText(GameData._i().Nickname);
         nickname.textColor = 0xffd11f;
         this.addChild(nickname);
@@ -36,6 +36,7 @@ var CreateHaibaoPage = (function (_super) {
         // headimg.x = 55;
         // headimg.y = 43;
         // this.addChild(headimg);
+        //this.getbase64();
         var bmp = new egret.Bitmap();
         bmp.x = 55;
         bmp.y = 43;
@@ -45,24 +46,61 @@ var CreateHaibaoPage = (function (_super) {
             bmp.height = 140;
             _this.addChild(bmp);
         });
-        // var backbtn: GameUtil.Menu = new GameUtil.Menu(this, 'backbtn_png', 'backbtn_png', this.backgamescene);
-        // backbtn.setScaleMode();
-        // backbtn.x = 375;
-        // backbtn.y = 1130;
-        // this.addChild(backbtn);
         this.tipContain = new egret.DisplayObjectContainer;
         this.addChild(this.tipContain);
         egret.setTimeout(this.showgz, this, 5000);
+    };
+    CreateHaibaoPage.prototype.getbase64 = function () {
+        function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+            var dataURL = canvas.toDataURL("image/" + ext);
+            return dataURL;
+        }
+        var imgLink = GameData._i().imageUrl;
+        var tempImage = new Image();
+        tempImage.src = imgLink;
+        tempImage.crossOrigin = "*";
+        tempImage.onload = function () {
+            var base64 = getBase64Image(tempImage);
+            console.log(base64);
+        };
+        //////////////////////
+        /*
+        var self = this;
+        var img_1 = new Image();
+        img_1.src = GameData._i().imageUrl;
+        img_1.crossOrigin = '*';
+        var bmp = new egret.Bitmap();
+        bmp.x = 55;
+        bmp.y = 43;
+        var bitmapData_1 = new egret.BitmapData(img_1);
+        img_1.onload = function () {
+            img_1.onload = undefined;
+            bitmapData_1.source = img_1;
+            bitmapData_1.height = img_1.height;
+            bitmapData_1.width = img_1.width;
+            bmp.bitmapData = bitmapData_1;
+            bmp.width = 140;
+            bmp.height = 140;
+            self.addChild(bmp);
+        };
+        */
     };
     CreateHaibaoPage.prototype.shareImage = function (target) {
         var renderTexture = new egret.RenderTexture();
         renderTexture.drawToTexture(target); //渲染到临时画布
         var divImage = document.getElementById("divImage"); //获取DIV
         var shareImage = document.getElementById("shareImage"); //获取Image标签
-        shareImage.src = renderTexture.toDataURL('image/png'); //把数据赋值给Image
-        shareImage.width = window.top.document.body.clientWidth;
-        shareImage.height = window.top.document.body.clientHeight;
+        shareImage.src = renderTexture.toDataURL('image/jpg'); //把数据赋值给Image
+        shareImage.style.width = window.top.document.body.clientWidth + 'px';
+        shareImage.style.height = window.top.document.body.clientHeight + 'px';
         divImage.style.display = "block"; //显示DIV
+        //alert('test==='+shareImage.style.width);
     };
     CreateHaibaoPage.prototype.showgz = function () {
         var coverbg = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);

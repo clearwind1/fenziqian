@@ -15,7 +15,7 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		Haibaopic.setanchorOff(0, 0);
 		this.addChild(Haibaopic);
 
-		var nickname: GameUtil.MyTextField = new GameUtil.MyTextField(442, 93, 40, 0.5, 0.5);
+		var nickname: GameUtil.MyTextField = new GameUtil.MyTextField(374, 93, 40, 0.5, 0.5);
 		nickname.setText(GameData._i().Nickname);
 		nickname.textColor = 0xffd11f;
 		this.addChild(nickname);
@@ -25,6 +25,9 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		// headimg.x = 55;
 		// headimg.y = 43;
 		// this.addChild(headimg);
+
+		//this.getbase64();
+
 		var bmp = new egret.Bitmap();
 		bmp.x = 55;
 		bmp.y = 43;
@@ -35,17 +38,53 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 			this.addChild(bmp);
 		});
 
-
-		// var backbtn: GameUtil.Menu = new GameUtil.Menu(this, 'backbtn_png', 'backbtn_png', this.backgamescene);
-		// backbtn.setScaleMode();
-		// backbtn.x = 375;
-		// backbtn.y = 1130;
-		// this.addChild(backbtn);
-
 		this.tipContain = new egret.DisplayObjectContainer;
 		this.addChild(this.tipContain);
 
 		egret.setTimeout(this.showgz, this, 5000);
+	}
+
+	private getbase64() {
+		function getBase64Image(img) {
+			var canvas = document.createElement("canvas");
+			canvas.width = img.width;
+			canvas.height = img.height;
+			var ctx = canvas.getContext("2d");
+			ctx.drawImage(img, 0, 0, img.width, img.height);
+			var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+			var dataURL = canvas.toDataURL("image/" + ext);
+			return dataURL;
+		}
+		var imgLink = GameData._i().imageUrl;
+		var tempImage = new Image();
+		tempImage.src = imgLink;
+		tempImage.crossOrigin = "*";
+		tempImage.onload = function () {
+			var base64 = getBase64Image(tempImage);
+			console.log(base64);
+		}
+
+		//////////////////////
+		/*
+		var self = this;
+		var img_1 = new Image();
+		img_1.src = GameData._i().imageUrl;
+		img_1.crossOrigin = '*';
+		var bmp = new egret.Bitmap();
+		bmp.x = 55;
+		bmp.y = 43;
+		var bitmapData_1 = new egret.BitmapData(img_1);
+		img_1.onload = function () {
+			img_1.onload = undefined;
+			bitmapData_1.source = img_1;
+			bitmapData_1.height = img_1.height;
+			bitmapData_1.width = img_1.width;
+			bmp.bitmapData = bitmapData_1;
+			bmp.width = 140;
+			bmp.height = 140;
+			self.addChild(bmp);
+		};
+		*/
 	}
 
 	public shareImage(target: egret.DisplayObject): void {
@@ -54,9 +93,10 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		var divImage = document.getElementById("divImage");//获取DIV
 		var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
 		shareImage.src = renderTexture.toDataURL('image/png');//把数据赋值给Image
-		shareImage.width = window.top.document.body.clientWidth;
-		shareImage.height = window.top.document.body.clientHeight;
+		shareImage.style.width = window.top.document.body.clientWidth + 'px';
+		shareImage.style.height = window.top.document.body.clientHeight + 'px';
 		divImage.style.display = "block";//显示DIV
+		//alert('test==='+shareImage.style.width);
 	}
 
 	private showgz() {
@@ -93,14 +133,14 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 	}
 	private jumpgz() {
 		window.top.location.href = "http://tingfeng.tristana.cn/showqrcode/qrcode.html";
-		
+
 	}
 	private showsharetip() {
 		var sharetipcontain: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
 		this.addChild(sharetipcontain);
 		var shar = GameUtil.createRect(0, 0, this.mStageW, this.mStageH, 0.6);
 		sharetipcontain.addChild(shar);
-		var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW/2, this.mStageH/2);
+		var sharetip = new MyBitmap(RES.getRes('sharetip_png'), this.mStageW / 2, this.mStageH / 2);
 		sharetipcontain.addChild(sharetip);
 		shar.$setTouchEnabled(true);
 
