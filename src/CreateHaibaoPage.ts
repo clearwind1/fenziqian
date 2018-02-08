@@ -21,12 +21,12 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		this.addChild(nickname);
 
 		//头像
-		// var headimg: GetImageByUrl = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
-		// headimg.x = 55;
-		// headimg.y = 43;
-		// this.addChild(headimg);
+		var headimg: GetImageByUrl = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
+		headimg.x = 55;
+		headimg.y = 43;
+		this.addChild(headimg);
 
-		this.getbase64();
+		//this.getbase64();
 
 		// var bmp = new egret.Bitmap();
 		// bmp.x = 55;

@@ -52,13 +52,13 @@ class AnswerPage extends GameUtil.BassPanel {
 	}
 	private updone(data) {
 		if (data['code'] == 0) {
-			console.log('data====', data['data']);
+			console.log('data====', (data['data'])['localImg']);
 			var info = data['data'];
 			GameData._i().Nickname = info['nickName'];
 			if (GameData._i().Nickname == 'test1') {
 				GameData._i().Nickname = '人情用户'
 			}
-			GameData._i().imageUrl = info['avatarUrl'];
+			GameData._i().imageUrl = "http://"+GameConfig.IP+ info['localImg'];
 			GameData._i().imageBase64 = info['avatarBase64'];
 			GameUtil.GameScene.runscene(new CreateHaibaoPage(this.selectID));
 		} else

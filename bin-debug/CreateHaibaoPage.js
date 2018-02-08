@@ -31,11 +31,11 @@ var CreateHaibaoPage = (function (_super) {
         nickname.textColor = 0xffd11f;
         this.addChild(nickname);
         //头像
-        // var headimg: GetImageByUrl = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
-        // headimg.x = 55;
-        // headimg.y = 43;
-        // this.addChild(headimg);
-        this.getbase64();
+        var headimg = new GetImageByUrl(GameData._i().imageUrl, 140, 140);
+        headimg.x = 55;
+        headimg.y = 43;
+        this.addChild(headimg);
+        //this.getbase64();
         // var bmp = new egret.Bitmap();
         // bmp.x = 55;
         // bmp.y = 43;
