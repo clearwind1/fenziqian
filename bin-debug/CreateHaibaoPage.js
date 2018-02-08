@@ -23,7 +23,6 @@ var CreateHaibaoPage = (function (_super) {
         this.show();
     };
     CreateHaibaoPage.prototype.show = function () {
-        var _this = this;
         var Haibaopic = new MyBitmap(RES.getRes('haibao' + this.selectID + '_jpg'), 0, 0);
         Haibaopic.setanchorOff(0, 0);
         this.addChild(Haibaopic);
@@ -36,21 +35,22 @@ var CreateHaibaoPage = (function (_super) {
         // headimg.x = 55;
         // headimg.y = 43;
         // this.addChild(headimg);
-        //this.getbase64();
-        var bmp = new egret.Bitmap();
-        bmp.x = 55;
-        bmp.y = 43;
-        egret.BitmapData.create('base64', GameData._i().imageBase64, function (bitmapData) {
-            bmp.bitmapData = bitmapData;
-            bmp.width = 140;
-            bmp.height = 140;
-            _this.addChild(bmp);
-        });
+        this.getbase64();
+        // var bmp = new egret.Bitmap();
+        // bmp.x = 55;
+        // bmp.y = 43;
+        // egret.BitmapData.create('base64', GameData._i().imageBase64, (bitmapData) => {
+        // 	bmp.bitmapData = bitmapData;
+        // 	bmp.width = 140;
+        // 	bmp.height = 140;
+        // 	this.addChild(bmp);
+        // });
         this.tipContain = new egret.DisplayObjectContainer;
         this.addChild(this.tipContain);
         egret.setTimeout(this.showgz, this, 5000);
     };
     CreateHaibaoPage.prototype.getbase64 = function () {
+        var self = this;
         function getBase64Image(img) {
             var canvas = document.createElement("canvas");
             canvas.width = img.width;
@@ -67,7 +67,17 @@ var CreateHaibaoPage = (function (_super) {
         tempImage.crossOrigin = "*";
         tempImage.onload = function () {
             var base64 = getBase64Image(tempImage);
-            console.log(base64);
+            var str = base64.substring(base64.indexOf(',') + 1);
+            console.log(str);
+            var bmp = new egret.Bitmap();
+            bmp.x = 55;
+            bmp.y = 43;
+            egret.BitmapData.create('base64', str, function (bitmapData) {
+                bmp.bitmapData = bitmapData;
+                bmp.width = 140;
+                bmp.height = 140;
+                self.addChild(bmp);
+            });
         };
         //////////////////////
         /*
@@ -96,7 +106,7 @@ var CreateHaibaoPage = (function (_super) {
         renderTexture.drawToTexture(target); //渲染到临时画布
         var divImage = document.getElementById("divImage"); //获取DIV
         var shareImage = document.getElementById("shareImage"); //获取Image标签
-        shareImage.src = renderTexture.toDataURL('image/jpg'); //把数据赋值给Image
+        shareImage.src = renderTexture.toDataURL('image/png'); //把数据赋值给Image
         shareImage.style.width = window.top.document.body.clientWidth + 'px';
         shareImage.style.height = window.top.document.body.clientHeight + 'px';
         divImage.style.display = "block"; //显示DIV

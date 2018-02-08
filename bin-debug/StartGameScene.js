@@ -101,8 +101,8 @@ var StartGameScene = (function (_super) {
     StartGameScene.prototype.startgame = function () {
         GameUtil.trace('startgame');
         GameData._i().gamesound[SoundName.s2].play(0, 1);
-        //GameUtil.GameScene.runscene(new GameScene());
-        GameUtil.GameScene.runscene(new CreateHaibaoPage(0));
+        GameUtil.GameScene.runscene(new GameScene());
+        //GameUtil.GameScene.runscene(new CreateHaibaoPage(0));
     };
     /**游戏排行榜 */
     StartGameScene.prototype.gamerank = function () {

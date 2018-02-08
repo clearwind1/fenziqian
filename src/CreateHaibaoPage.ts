@@ -26,17 +26,17 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		// headimg.y = 43;
 		// this.addChild(headimg);
 
-		//this.getbase64();
+		this.getbase64();
 
-		var bmp = new egret.Bitmap();
-		bmp.x = 55;
-		bmp.y = 43;
-		egret.BitmapData.create('base64', GameData._i().imageBase64, (bitmapData) => {
-			bmp.bitmapData = bitmapData;
-			bmp.width = 140;
-			bmp.height = 140;
-			this.addChild(bmp);
-		});
+		// var bmp = new egret.Bitmap();
+		// bmp.x = 55;
+		// bmp.y = 43;
+		// egret.BitmapData.create('base64', GameData._i().imageBase64, (bitmapData) => {
+		// 	bmp.bitmapData = bitmapData;
+		// 	bmp.width = 140;
+		// 	bmp.height = 140;
+		// 	this.addChild(bmp);
+		// });
 
 		this.tipContain = new egret.DisplayObjectContainer;
 		this.addChild(this.tipContain);
@@ -45,6 +45,7 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 	}
 
 	private getbase64() {
+		var self = this;
 		function getBase64Image(img) {
 			var canvas = document.createElement("canvas");
 			canvas.width = img.width;
@@ -61,7 +62,18 @@ class CreateHaibaoPage extends GameUtil.BassPanel {
 		tempImage.crossOrigin = "*";
 		tempImage.onload = function () {
 			var base64 = getBase64Image(tempImage);
-			console.log(base64);
+			var str = base64.substring(base64.indexOf(',') + 1);
+			console.log(str);
+
+			var bmp = new egret.Bitmap();
+			bmp.x = 55;
+			bmp.y = 43;
+			egret.BitmapData.create('base64', str, (bitmapData) => {
+				bmp.bitmapData = bitmapData;
+				bmp.width = 140;
+				bmp.height = 140;
+				self.addChild(bmp);
+			});
 		}
 
 		//////////////////////
